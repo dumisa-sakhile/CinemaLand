@@ -15,11 +15,11 @@ import MovieUpcoming from "./pages/MovieUpcoming";
 import MovieSearch from "./pages/MovieSearch";
 import MovieDiscover from "./pages/MovieDiscover";
 import ProtectedRoute from "./components/ProtectedRoute";
-import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { Toaster } from "sonner"; // Import Sonner
 
 const queryClient = new QueryClient();
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -38,51 +38,27 @@ const router = createBrowserRouter([
         path: "/movie",
         element: <MoviePageLayout />,
         children: [
-          {
-            index: true,
-            element: <MovieDiscover />,
-          },
-          {
-            path: "/movie/popular",
-            element: <MoviePopular />,
-          },
-          {
-            path: "/movie/genre-filters",
-            element: <MovieGenre />,
-          },
-          {
-            path: "/movie/now-playing",
-            element: <MovieNowPlaying />,
-          },
-          {
-            path: "/movie/top-rated",
-            element: <MovieTopRated />,
-          },
-          {
-            path: "/movie/upcoming",
-            element: <MovieUpcoming />,
-          },
-          {
-            path: "/movie/search",
-            element: <MovieSearch />,
-          },
+          { index: true, element: <MovieDiscover /> },
+          { path: "/movie/popular", element: <MoviePopular /> },
+          { path: "/movie/genre-filters", element: <MovieGenre /> },
+          { path: "/movie/now-playing", element: <MovieNowPlaying /> },
+          { path: "/movie/top-rated", element: <MovieTopRated /> },
+          { path: "/movie/upcoming", element: <MovieUpcoming /> },
+          { path: "/movie/search", element: <MovieSearch /> },
         ],
       },
     ],
   },
-
-  {
-    path: "*",
-    element: <NotFound />,
-  },
+  { path: "*", element: <NotFound /> },
 ]);
 
-  injectSpeedInsights();
+injectSpeedInsights();
 
 export default function App() {
   return (
-    <div className="min-w-full min-h-screen text-[#F2F2F2] roboto-condensed-regular scrollbar-hide flex flex-col items-center justify-center rounded-lg gap-6  ">
+    <div className="min-w-full min-h-screen text-[#F2F2F2] roboto-condensed-regular scrollbar-hide flex flex-col items-center justify-center rounded-lg gap-6 ">
       <QueryClientProvider client={queryClient}>
+        <Toaster /> {/* Add the Toaster component here */}
         <RouterProvider router={router} />
         <ReactQueryDevtools />
       </QueryClientProvider>

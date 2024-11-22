@@ -11,9 +11,9 @@ const MoviePageLayout = () => {
       transition={{ duration: 0.5 }}>
       <MovieNavigation />
 
-
       <main className="bg-none lg:fixed lg:left-0 lg:top-0 w-full h-screen flex flex-col items-start justify-start p-4  pl-[100px] rounded-lg   bg-black">
         <Outlet />
+
       </main>
     </motion.div>
   );

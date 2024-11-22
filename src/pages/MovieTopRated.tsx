@@ -4,6 +4,8 @@ import { getTopRatedMovies } from "@/components/Api";
 import MovieCard from "@/components/MovieCard";
 import Skeleton from "@/components/Skeleton";
 import ApiError from "@/components/ApiError";
+import MovieFooter from "@/components/MovieFooter";
+import { toast } from "sonner";
 
 const MovieTopRated = () => {
   const [pageNumber, setPageNumber] = useState<number>(1);
@@ -20,6 +22,23 @@ const MovieTopRated = () => {
       setTotalPages(data.total_pages);
     }
   }, [data]);
+ useEffect(() => {
+   if (isLoading) {
+     toast.info("Loading data...");
+   }
+ }, [isLoading]);
+
+ useEffect(() => {
+   if (isError) {
+     toast.error(`Error loading data:  ${error.message}`);
+   }
+ }, [isError, error]);
+ 
+   useEffect(() => {
+     toast.success(
+       "Welcome to the Top Rated Movies Page! Here you can find the most popular movies on TMDB."
+     );
+   }, []);
 
   {
    
@@ -31,7 +50,6 @@ const MovieTopRated = () => {
         <h6 className="text-sm font-bold oswald-regular text-[#FACC15] ">
           Top Rated Movies Page
         </h6>
-        
       </header>
 
       <main className="flex flex-row flex-wrap gap-10 min-w-[500px] p-10 pb-[40px]  rounded-lg justify-center items-center bg-[#000000]">
@@ -51,6 +69,11 @@ const MovieTopRated = () => {
         ))}
       </main>
       {/* Display popular movies */}
+
+      <div className="relative z-20 w-full flex items-center justify-center bg-black py-20">
+        <MovieFooter />
+      </div>
+
       {/* Pagination */}
       <footer className="fixed bottom-2 w-full flex items-center justify-center  py-4    roboto-condensed-regular  bg-inherit shadow-lg ">
         <div className="flex flex-row gap-6 items-center justify-center bg-[#27272a] border border-[rgb(16,16,43)] px-32 py-4 rounded">

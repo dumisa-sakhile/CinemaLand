@@ -4,6 +4,8 @@ import { getNowPlayingMovies } from "@/components/Api";
 import MovieCard from "@/components/MovieCard";
 import Skeleton from "@/components/Skeleton";
 import ApiError from "@/components/ApiError";
+import MovieFooter from "@/components/MovieFooter";
+import { toast } from "sonner";
 
 const MovieNowPlaying = () => {
   const [pageNumber, setPageNumber] = useState<number>(1);
@@ -21,6 +23,24 @@ const MovieNowPlaying = () => {
     }
   }, [data]);
 
+  useEffect(() => {
+    if (isLoading) {
+      toast.info("Loading data...");
+    }
+  }, [isLoading]);
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(`Error loading data:  ${error.message}`);
+    }
+  }, [isError, error]);
+
+   useEffect(() => {
+     toast.success(
+       "Welcome to the Now Playing Movies Page! Here you can find the most popular movies on TMDB."
+     );
+   }, []);
+
   {
   }
 
@@ -32,11 +52,9 @@ const MovieNowPlaying = () => {
         </h6>
       </header>
       <main className="flex flex-row flex-wrap gap-10 min-w-[500px] p-10 pb-[40px]  rounded-lg justify-center items-center bg-[#000000]">
-        {isLoading && (
-          <Skeleton/>
-        )}
+        {isLoading && <Skeleton />}
 
-        {isError && <ApiError error={error.message}/>}
+        {isError && <ApiError error={error.message} />}
 
         {data?.results?.map((movie: any) => (
           <MovieCard
@@ -51,6 +69,10 @@ const MovieNowPlaying = () => {
         ))}
       </main>
       {/* Display popular movies */}
+
+      <div className="relative z-20 w-full flex items-center justify-center bg-black py-20">
+        <MovieFooter />
+      </div>
 
       {/* Pagination */}
       <footer className="fixed bottom-2 w-full flex items-center justify-center  py-4    roboto-condensed-regular  bg-inherit shadow-lg ">

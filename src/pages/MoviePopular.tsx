@@ -4,6 +4,8 @@ import { getPopularMovies } from "@/components/Api";
 import MovieCard from "@/components/MovieCard";
 import Skeleton from "@/components/Skeleton";
 import ApiError from "@/components/ApiError";
+import MovieFooter from "@/components/MovieFooter";
+import { toast } from "sonner";
 
 
 const MoviePopular = () => {
@@ -23,10 +25,26 @@ useEffect(() => {
   }
 }, [data]);
 
+ useEffect(() => {
+   if (isLoading) {
+     toast.info("Loading data...");
+   }
+ }, [isLoading]);
 
+ useEffect(() => {
+   if (isError) {
+     toast.error(`Error loading data:  ${error.message}`);
+   }
+ }, [isError, error]);
+
+  useEffect(() => {
+    toast.success(
+      "Welcome to the Popular Movies Page! Here you can find the most popular movies on TMDB."
+    );
+  }, []);
 
   return (
-    <div className="flex flex-col gap-4 w-full h-screen overflow-auto pb-10">
+    <div className="flex flex-col gap-4 w-full h-screen overflow-auto">
       <header className="flex flex-col gap-2 items-center justify-center text-center">
         <h6 className="text-sm font-bold oswald-regular text-[#FACC15] ">
           Popular Movies Page
@@ -49,6 +67,11 @@ useEffect(() => {
           />
         ))}
       </main>
+
+      <div className="relative z-20 w-full flex items-center justify-center bg-black py-20">
+        <MovieFooter />
+      </div>
+
       {/* Display popular movies */}
       {/* Pagination */}
       <footer className="fixed bottom-2 w-full flex items-center justify-center  py-4    roboto-condensed-regular  bg-inherit shadow-lg ">
