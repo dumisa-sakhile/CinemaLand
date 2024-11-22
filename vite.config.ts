@@ -9,5 +9,8 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  envPrefix: ["VITE_", "META_"], // added envPrefix configuration
+  envPrefix: ["VITE_", "META_"],
+  build: {
+    sourcemap: false, // or 'hidden'
+  },
 });
