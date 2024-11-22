@@ -22,7 +22,7 @@ const MovieUpcoming = () => {
   }, [data]);
 
   {
-    console.log(data);
+   
   }
 
   return (

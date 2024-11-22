@@ -23,7 +23,6 @@ useEffect(() => {
   }
 }, [data]);
 
-{console.log(data)}
 
 
   return (

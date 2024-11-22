@@ -22,7 +22,7 @@ const MovieTopRated = () => {
   }, [data]);
 
   {
-    console.log(data);
+   
   }
 
   return (

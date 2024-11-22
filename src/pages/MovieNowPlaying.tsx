@@ -22,7 +22,6 @@ const MovieNowPlaying = () => {
   }, [data]);
 
   {
-    console.log(data);
   }
 
   return (
