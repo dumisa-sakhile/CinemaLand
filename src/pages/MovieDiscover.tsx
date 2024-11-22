@@ -4,7 +4,7 @@ const MovieDiscover = () => {
 
   return (
   <div>
-    discover
+    discover Movie
   </div>
   );
 }
