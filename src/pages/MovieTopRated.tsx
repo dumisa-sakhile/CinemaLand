@@ -75,32 +75,34 @@ const MovieTopRated = () => {
       </div>
 
       {/* Pagination */}
-      <footer className="fixed bottom-2 w-full flex items-center justify-center  py-4    roboto-condensed-regular  bg-inherit shadow-lg ">
-        <div className="flex flex-row gap-6 items-center justify-center bg-[#27272a] border border-[rgb(16,16,43)] px-32 py-4 rounded">
-          {/* Help text */}
-          <span className="text-sm text-gray-400 ">
-            Showing{" "}
-            <span className="font-semibold text-white">{pageNumber}</span> to of{" "}
-            <span className="font-semibold text-white">{totalPages}</span>{" "}
-            Entries
-          </span>
-          {/* Buttons */}
-          <div className="inline-flex mt-2 xs:mt-0">
-            <button
-              className="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-red-600 rounded-s hover:bg-red-700"
-              disabled={pageNumber <= 1}
-              onClick={() => setPageNumber(pageNumber - 1)}>
-              Prev
-            </button>
-            <button
-              className="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-green-600 border-0 border-s border-gray-700 rounded-e hover:bg-gree7-900"
-              disabled={pageNumber >= totalPages}
-              onClick={() => setPageNumber(pageNumber + 1)}>
-              Next
-            </button>
+      {!isError && !isLoading && (
+        <footer className="fixed bottom-2 w-full flex items-center justify-center  py-4    roboto-condensed-regular  bg-inherit shadow-lg ">
+          <div className="flex flex-row gap-6 items-center justify-center bg-[#27272a] border border-[rgb(16,16,43)] px-32 py-4 rounded">
+            {/* Help text */}
+            <span className="text-sm text-gray-400 ">
+              Showing{" "}
+              <span className="font-semibold text-white">{pageNumber}</span> to
+              of <span className="font-semibold text-white">{totalPages}</span>{" "}
+              Entries
+            </span>
+            {/* Buttons */}
+            <div className="inline-flex mt-2 xs:mt-0">
+              <button
+                className="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-red-600 rounded-s hover:bg-red-700"
+                disabled={pageNumber <= 1}
+                onClick={() => setPageNumber(pageNumber - 1)}>
+                Prev
+              </button>
+              <button
+                className="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-green-600 border-0 border-s border-gray-700 rounded-e hover:bg-gree7-900"
+                disabled={pageNumber >= totalPages}
+                onClick={() => setPageNumber(pageNumber + 1)}>
+                Next
+              </button>
+            </div>
           </div>
-        </div>
-      </footer>
+        </footer>
+      )}
       {/* Pagination */}
     </div>
   );

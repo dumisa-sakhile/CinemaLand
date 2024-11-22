@@ -47,7 +47,6 @@ export const getNowPlayingMovies = async (pageNumber: number) => {
       page: `${pageNumber}`,
     },
   });
-  throw new Error("internal error");
   return response.data;      
 };
 

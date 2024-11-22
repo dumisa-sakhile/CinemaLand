@@ -10,9 +10,9 @@ const ApiError = ({error}: {error: any}) => {
       transition={{ duration: 0.5 }}>
       <section>
         <div>
-          <div className="container flex flex-col items-center justify-center lg:min-h-[600px] px-4 py-16 pb-24 mx-auto text-center lg:pb-56 md:py-32 md:px-10 lg:px-32 text-gray-50 gap-8 ">
+          <div className="container flex flex-col items-center justify-center lg:min-h-[50%] px-4 py-16 pb-24 mx-auto text-center lg:pb-56 md:py-32 md:px-10 lg:px-32 text-gray-50 gap-8 ">
             <motion.h1
-              className="text-5xl font-bold leading-none sm:text-6xl xl:max-w-3xl text-gray-50 oswald-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-red-500"
+              className="text-5xl font-bold leading-none sm:text-6xl xl:max-w-3xl text-[#FACC15] oswald-bold "
               initial={{ scale: 2 }}
               animate={{ scale: 1 }}
               transition={{ duration: 0.5 }}>
