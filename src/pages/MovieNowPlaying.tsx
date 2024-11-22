@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { getNowPlayingMovies } from "@/components/Api";
 import MovieCard from "@/components/MovieCard";
+import Skeleton from "@/components/Skeleton";
+import ApiError from "@/components/ApiError";
 
 const MovieNowPlaying = () => {
   const [pageNumber, setPageNumber] = useState<number>(1);
@@ -29,11 +31,13 @@ const MovieNowPlaying = () => {
         <h6 className="text-sm font-bold oswald-regular text-[#FACC15] ">
           Now Playing Movies Page
         </h6>
-        
       </header>
       <main className="flex flex-row flex-wrap gap-10 min-w-[500px] p-10 pb-[40px]  rounded-lg justify-center items-center bg-[#000000]">
-        {isLoading && <p>Loading...</p>}
-        {isError && <p>Error: {error.message}</p>}
+        {isLoading && (
+          <Skeleton/>
+        )}
+
+        {isError && <ApiError error={error.message}/>}
 
         {data?.results?.map((movie: any) => (
           <MovieCard
