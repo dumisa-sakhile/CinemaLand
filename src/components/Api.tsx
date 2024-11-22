@@ -1,13 +1,10 @@
 import axios from "axios";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 const tmdbApi = axios.create({
   baseURL: "https://api.themoviedb.org/3/",
 });
 
-const token = process.env.API_KEY;
+const token = import.meta.env.META_API_KEY;
 
 tmdbApi.interceptors.request.use((config) => {
   if (token) {
@@ -31,6 +28,7 @@ export const getTopRatedMovies = async (pageNumber: number) => {
       page: `${pageNumber}`,
     },
   });
+
   return response.data;  
 };
 
