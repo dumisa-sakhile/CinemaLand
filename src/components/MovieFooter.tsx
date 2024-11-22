@@ -11,7 +11,7 @@ const MovieFooter = () => {
           </span>
           . All Rights Reserved.{" "}
         </span>
-        <ul className="flex flex-wrap items-center mt-3 text-sm font-medium sm:mt-0">
+        <ul className="flex flex-wrap items-center mt-3 text-sm font-medium sm:mt-0 gap-2">
           <li>
             API powered by{" "}
             <a
@@ -19,7 +19,16 @@ const MovieFooter = () => {
               className="hover:underline text-[#FACC15]"
               target="_blank">
               TMDB
-            </a>
+            </a>.
+          </li>
+          <li>
+            Developed by{" "}
+            <a
+              href="https:github.com/dumisa-sakhile"
+              className="hover:underline text-[#FACC15]"
+              target="_blank">
+              Dumisa
+            </a>.
           </li>
         </ul>
       </div>
