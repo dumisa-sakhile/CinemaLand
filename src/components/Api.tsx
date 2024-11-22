@@ -51,3 +51,13 @@ export const getNowPlayingMovies = async (pageNumber: number) => {
 };
 
 
+export const searchMovies = async (pageNumber: number, searchQuery: string) => {
+  const response = await tmdbApi.get(`search/movie?`, {
+    params: {
+      page: `${pageNumber}`,
+      query: `${searchQuery}`,
+    },
+  });
+  return response.data;
+};
+

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion"
 import { Link } from "react-router-dom";
-
+import posterFallback from "/public/poster.png?url";
 interface MovieType {
   id: string;
   title: string;
@@ -28,7 +28,9 @@ const MovieCard = ({
         <img
           loading="lazy"
           className="w-[178px] h-[299px] rounded-t-lg"
-          src={`https://image.tmdb.org/t/p/w500/${poster}`}
+          src={
+            poster ? `https://image.tmdb.org/t/p/w500/${poster}` : posterFallback
+          }
         />
 
         <div className="w-full h-[124px]  rounded-b-md flex flex-col justify-start items-start p-2 gap-4 pb-4">
