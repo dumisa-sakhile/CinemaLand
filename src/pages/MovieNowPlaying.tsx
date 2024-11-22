@@ -77,7 +77,7 @@ const MovieNowPlaying = () => {
       {/* Pagination */}
       {!isError && !isLoading && (
         <footer className="fixed bottom-2 w-full flex items-center justify-center  py-4    roboto-condensed-regular  bg-inherit shadow-lg ">
-          <div className="flex flex-row gap-6 items-center justify-center bg-[#27272a] border border-[rgb(16,16,43)] px-32 py-4 rounded">
+          <div className="flex flex-row gap-6 items-center justify-center bg-[#1C1917] border border-[#27272a] px-32 py-4 rounded">
             {/* Help text */}
             <span className="text-sm text-gray-400 ">
               Showing{" "}
