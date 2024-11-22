@@ -1,10 +1,11 @@
 import axios from "axios";
+import dotenv from "dotenv";
 
 const tmdbApi = axios.create({
   baseURL: "https://api.themoviedb.org/3/",
 });
 
-const token = import.meta.env.META_API_KEY;
+const token = process.env.API_KEY;
 
 tmdbApi.interceptors.request.use((config) => {
   if (token) {
