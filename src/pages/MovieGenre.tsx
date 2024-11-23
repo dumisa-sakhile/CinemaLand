@@ -10,6 +10,7 @@ import GenreData from "@/components/GenreData";
 import { Button } from "@/components/ui/button";
 
 const MovieDiscover = () => {
+  document.title = "Cinema Land | Movie Genres Filter";
   const [genreId, setGenreId] = useState<number>(28);
   const [genreType, setGenreType] = useState<string>("Action");
 

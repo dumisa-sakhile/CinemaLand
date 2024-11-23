@@ -9,6 +9,7 @@ import { toast } from "sonner";
 
 
 const MoviePopular = () => {
+  document.title = "Cinema Land | Popular Movies";
 const [pageNumber, setPageNumber] = useState<number>(1);
 const [totalPages, setTotalPages] = useState<number>(9);
 

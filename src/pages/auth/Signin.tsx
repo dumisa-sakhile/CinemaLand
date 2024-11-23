@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import {motion} from "framer-motion";
 
 const Signin = () => {
+  document.title = "Cinema Land | Sign in";
 
   return (
     <>

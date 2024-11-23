@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarDay,faCalendarWeek } from "@fortawesome/free-solid-svg-icons";
 
 const MovieDiscover = () => {
+  document.title = "Cinema Land | Movie Discovery";
   const [period, setPeriod] = useState<"week" | "day">("day");
   const [pageNumber, setPageNumber] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(9);

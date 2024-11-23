@@ -3,6 +3,7 @@ import {Button} from "@/components/ui/button";
 import {motion} from "framer-motion";
 
 const Signup = () => {
+  document.title = "Cinema Land | Sign up";
 
 
   return (

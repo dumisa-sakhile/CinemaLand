@@ -8,6 +8,7 @@ import MovieFooter from "@/components/MovieFooter";
 import { toast } from "sonner";
 
 const MovieUpcoming = () => {
+  document.title = "Cinema Land | Upcoming Movies";
   const [pageNumber, setPageNumber] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(9);
 

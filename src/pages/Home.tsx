@@ -5,6 +5,7 @@ import AuthenticatedStatus from "@/components/AuthenticatedStatus";
 import { Navigate } from "react-router-dom";
 
 export default function Home() {
+  document.title = "Cinema Land | Home";
   
   if (AuthenticatedStatus()) {
     return <Navigate to="/movie" />;

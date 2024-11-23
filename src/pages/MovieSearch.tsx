@@ -8,6 +8,7 @@ import MovieFooter from "@/components/MovieFooter";
 import { toast } from "sonner";
 
 const MovieSearch = () => {
+  document.title = "Cinema Land | Search Movies";
   const [pageNumber, setPageNumber] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(9);
   const [search, setSearch] = useState<string>("");

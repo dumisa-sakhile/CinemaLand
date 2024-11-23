@@ -8,6 +8,7 @@ import MovieFooter from "@/components/MovieFooter";
 import { toast } from "sonner";
 
 const MovieNowPlaying = () => {
+  document.title = "Cinema Land | Now Playing Movies";
   const [pageNumber, setPageNumber] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(9);
 

@@ -4,6 +4,7 @@ import {motion} from "framer-motion";
 
 
 const Reset = () => {
+  document.title = "Cinema Land | Reset Password";
  
   return (
     <motion.div

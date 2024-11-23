@@ -8,6 +8,7 @@ import MovieFooter from "@/components/MovieFooter";
 import { toast } from "sonner";
 
 const MovieTopRated = () => {
+  document.title = "Cinema Land | Top rated Movies";
   const [pageNumber, setPageNumber] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(9);
 
