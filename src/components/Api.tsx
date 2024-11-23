@@ -61,3 +61,11 @@ export const searchMovies = async (pageNumber: number, searchQuery: string) => {
   return response.data;
 };
 
+export const getTrendingMovies = async ( period: string, pageNumber: number) => {
+  const response = await tmdbApi.get(`/trending/movie/${period}`, {
+    params: {
+      page: `${pageNumber}`,
+    },
+  });
+  return response.data;
+};

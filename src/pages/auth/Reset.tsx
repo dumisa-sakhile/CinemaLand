@@ -4,7 +4,6 @@ import {motion} from "framer-motion";
 
 
 const Reset = () => {
-  
  
   return (
     <motion.div

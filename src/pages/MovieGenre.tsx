@@ -1,11 +1,7 @@
-
 const MovieGenre = () => {
   return (
-    <div>
-      MovieGenre
-      
-    </div>
-  );
+    <div>MovieGenre</div>
+  )
 }
 
 export default MovieGenre
