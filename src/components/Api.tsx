@@ -69,3 +69,18 @@ export const getTrendingMovies = async ( period: string, pageNumber: number) => 
   });
   return response.data;
 };
+
+
+export const getMoviesByGenre = async (pageNumber: number, queryGenre: number) => {
+  const response = await tmdbApi.get(`discover/movie?`, {
+    params: {
+      include_adult: false,
+      include_video: false,
+      language: "en-US",
+      page: `${pageNumber}`,
+      sort_by: "popularity.desc",
+      with_genres: `${queryGenre}`,
+    },
+  });
+  return response.data;
+};

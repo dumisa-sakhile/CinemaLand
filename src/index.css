@@ -312,3 +312,15 @@ body{
 :disabled{
   @apply cursor-not-allowed bg-[#27272a]
 }
+
+
+.hide-scrollbar {
+  overflow-x: overlay;
+  overflow-y: hidden;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}

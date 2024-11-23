@@ -6,6 +6,8 @@ import Skeleton from "@/components/Skeleton";
 import ApiError from "@/components/ApiError";
 import MovieFooter from "@/components/MovieFooter";
 import { toast } from "sonner";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCalendarDay,faCalendarWeek } from "@fortawesome/free-solid-svg-icons";
 
 const MovieDiscover = () => {
   const [period, setPeriod] = useState<"week" | "day">("day");
@@ -52,37 +54,39 @@ const MovieDiscover = () => {
   }
 
   return (
-    <div className="flex flex-col gap-4 w-full h-screen overflow-auto">
-      <header className="flex flex-col gap-2 items-center justify-center text-center">
+    <div className="flex flex-col gap-4 w-full h-scree items-center overflow-auto py-4">
+      <aside className="flex flex-row gap-2 items-center justify-between w-[80%] rounded">
         <h6 className="text-sm font-bold oswald-regular text-[#FACC15] ">
           Trending Movies Page
         </h6>
+
+        <div className="relative z-20 min-w-[200px] flex items-center justify-between bg-[#1C1917] border border-[#27272a]   rounded">
+          <button
+            className={`px-10 py-2 rounded flex items-center justify-center gap-4 ${
+              period === "day"
+                ? "bg-[#FACC15] text-black"
+                : "bg-[#1C1917] text-white"
+            }`}
+            onClick={() => handlePeriodChange("day")}>
+            <FontAwesomeIcon icon={faCalendarDay} /> Day
+          </button>
+          <button
+            className={`px-10 py-2 rounded flex items-center justify-center gap-4 ${
+              period === "week"
+                ? "bg-[#FACC15] text-black"
+                : "bg-[#1C1917] text-white"
+            }`}
+            onClick={() => handlePeriodChange("week")}>
+            <FontAwesomeIcon icon={faCalendarWeek} />
+            Week
+          </button>
+        </div>
+
         <p className="text-sm">
-          These are the currently trending movies on TMDB this{" "}
+         Trending movies on TMDB this{" "}
           <span className="text-[#FACC15] uppercase font-bold">{period}</span>.
         </p>
-      </header>
-
-      <div className="relative z-20 w-full flex items-center justify-center bg-black">
-        <button
-          className={`px-4 py-2 rounded-lg ${
-            period === "day"
-              ? "bg-[#FACC15] text-black"
-              : "bg-[#1C1917] text-white"
-          }`}
-          onClick={() => handlePeriodChange("day")}>
-          Day
-        </button>
-        <button
-          className={`px-4 py-2 rounded-lg ${
-            period === "week"
-              ? "bg-[#FACC15] text-black"
-              : "bg-[#1C1917] text-white"
-          }`}
-          onClick={() => handlePeriodChange("week")}>
-          Week
-        </button>
-      </div>
+      </aside>
 
       <main className="flex flex-row flex-wrap gap-10 min-w-[500px] p-10 pb-[40px]  rounded-lg justify-center items-center bg-[#000000]">
         {isLoading && <Skeleton />}
