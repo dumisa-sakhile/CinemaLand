@@ -50,6 +50,10 @@ const MovieSearch = () => {
     }
   }, [data]);
 
+  useEffect(() => {
+    search.trim() ?? toast.info(`Search results for: ${search}`);
+  }, [data]);
+
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
@@ -101,9 +105,12 @@ const MovieSearch = () => {
               type="button"
               className="text-black absolute end-2.5 bottom-2.5 bg-[#FACC15] hover:bg-[#FACC15]/80 focus:ring-4 focus:outline-none focus:ring-[#FACC15]/50 font-medium rounded-lg text-sm px-4 py-2" onClick={
                 ()=> {
-                   setPageNumber(1);
-                  refetch()
-              }}>
+                  
+                    setPageNumber(1);
+                    refetch();
+                  
+                   
+              }} disabled={search.trim() === ""}>
               Search
             </button>
           </div>
