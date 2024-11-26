@@ -76,7 +76,7 @@ const MovieDetails = () => {
       <img
         src={`https://image.tmdb.org/t/p/original/${data?.backdrop_path}`}
         alt="backdrop image"
-        className="w-full fixed top-0 left-0 -z-0"
+        className="w-full h-screen fixed top-0 left-0 -z-0"
       />
       {/* background image */}
 
