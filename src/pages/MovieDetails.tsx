@@ -22,7 +22,9 @@ import {
 } from "@/components/ui/dialog";
 import ReactPlayer from "react-player/youtube";
 import { useQuery } from "@tanstack/react-query";
-import { getMovieVideos } from "@/components/Api";
+import { getMovieDetails, getMovieVideos } from "@/components/Api";
+import Skeleton from "@/components/Skeleton";
+import ApiError from "@/components/ApiError";
 
 
 
@@ -32,6 +34,10 @@ const MovieDetails = () => {
   const navigate = useNavigate();
   document.title = `Cinema Land | Movie Details | ${movieId}`;
 
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ["movie", movieId],
+    queryFn: () => getMovieDetails(movieId),
+  });
   const { data : videoData, isLoading : videoLoading} = useQuery({
     queryKey: ["video", movieId],
     queryFn: () => getMovieVideos(movieId),
@@ -68,7 +74,7 @@ const MovieDetails = () => {
       transition={{ duration: 0.5 }}>
       {/* background image */}
       <img
-        src="https://image.tmdb.org/t/p/original//hygkfPt0it7KLrXEMelzNQg5mM5.jpg"
+        src={`https://image.tmdb.org/t/p/original/${data?.backdrop_path}`}
         alt="backdrop image"
         className="w-full fixed top-0 left-0 -z-0"
       />
@@ -80,20 +86,26 @@ const MovieDetails = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}>
+          {isLoading && <Skeleton />}
+          {isError && <ApiError error={error.message} />}
           {/* title */}
           <h1 className="text-5xl font-bold leading-none  text-[#FACC15] poppins-bold">
-            The Black Phone
+            {data?.title}
           </h1>
 
           {/* tagline */}
-          <p className="text-lg poppins-normal">'Indodana yami iyeza'</p>
+          <p className="text-lg poppins-normal">{data?.tagline}</p>
 
           {/* buttons website and add to watchlist */}
           <article className="flex items-center gap-4 roboto-condensed-regular *:flex *:items-center *:gap-2 text-lg">
-            <Button>
-              <FontAwesomeIcon icon={faLink} className="mr-2" />
-              website
-            </Button>
+            {data?.homepage && (
+              <a href={data?.homepage} target="_blank">
+                <Button>
+                  <FontAwesomeIcon icon={faLink} className="mr-2" />
+                  website
+                </Button>
+              </a>
+            )}
             <Button variant="outline" className="bg-transparent">
               <FontAwesomeIcon icon={faPlus} />
               add to watchlist
@@ -136,14 +148,16 @@ const MovieDetails = () => {
           {/* release date, rating, duration */}
           <article className="flex items-center gap-4 roboto-condensed-regular *:flex *:items-center *:gap-2 text-lg">
             <p>
-              Released: <span className="text-[#FACC15]">12/12/2022</span>
+              Released:{" "}
+              <span className="text-[#FACC15]">{data?.release_date}</span>
             </p>
             <p>
               <FontAwesomeIcon icon={faStar} style={{ color: "#FFD43B" }} />:
-              <span className="text-[#FACC15]">07/10</span>
+              <span className="text-[#FACC15]">{data?.vote_average}/10</span>
             </p>
             <p>
-              Duration: <span className="text-[#FACC15]">2h 10m</span>
+              Duration:{" "}
+              <span className="text-[#FACC15]">{data?.runtime} min</span>
             </p>
           </article>
 
@@ -152,18 +166,16 @@ const MovieDetails = () => {
             <span>
               <span className="text-[#FACC15] oswald-regular">Overview: </span>
             </span>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid
-            commodi a libero dolores, distinctio molestiae perferendis dolorum
-            ducimus pariatur deleniti, earum voluptas esse sed praesentium!
+            {data?.overview}
           </p>
 
           {/* genres */}
           <div className="flex flex-col gap-4 w-full">
             <h6 className="text-sm roboto-condensed-regular">Genres</h6>
             <ul className="flex gap-3 flex-wrap *:py-2 ]*:rounded-full *:bg-opacity-75 w-1/2 text-md  roboto-condensed-light  *:cursor-pointer text-[#FACC15] *:underline hover:*:text-white hover:*:no-underline">
-              <li>Soul</li>
-              <li>Drama</li>
-              <li>Thriller</li>
+              {data?.genres?.map((genre: any) => (
+                <li key={genre.id}>{genre.name}</li>
+              ))}
             </ul>
           </div>
 
@@ -173,14 +185,9 @@ const MovieDetails = () => {
               Spoken languages
             </h6>
             <ul className="flex gap-3 flex-wrap *:py-2 ]*:rounded-full *:bg-opacity-75 w-1/2 text-md  roboto-condensed-light  *:cursor-pointer text-[#FACC15] *:underline hover:*:text-white hover:*:no-underline">
-              <li>English</li>
-              <li>Spanish</li>
-              <li>French</li>
-              <li>German</li>
-              <li>Italian</li>
-              <li>Chinese</li>
-              <li>Japanese</li>
-              <li>Korean</li>
+              {data?.spoken_languages?.map((language: any) => (
+                <li key={language.english_name}>{language.english_name}</li>
+              ))}
             </ul>
           </div>
 
@@ -190,11 +197,9 @@ const MovieDetails = () => {
               Production companies
             </h6>
             <ul className="flex gap-3 flex-wrap *:py-2 ]*:rounded-full *:bg-opacity-75 w-1/2 text-md  roboto-condensed-light  *:cursor-pointer text-[#FACC15] *:underline hover:*:text-white hover:*:no-underline">
-              <li>Netflix</li>
-              <li>Blumhouse Productions</li>
-              <li>Studio Ghibli</li>
-              <li>The Walt Disney Studios</li>
-              <li>Universal Pictures</li>
+              {data?.production_companies?.map((company: any) => (
+                <li key={company.id}>{company.name}</li>
+              ))}
             </ul>
           </div>
 
@@ -204,13 +209,9 @@ const MovieDetails = () => {
               Production countries
             </h6>
             <ul className="flex gap-3 flex-wrap *:py-2 ]*:rounded-full *:bg-opacity-75 w-1/2 text-md  roboto-condensed-light  *:cursor-pointer text-[#FACC15] *:underline hover:*:text-white hover:*:no-underline">
-              <li>United States</li>
-              <li>Japan</li>
-              <li>France</li>
-              <li>Germany</li>
-              <li>Italy</li>
-              <li>China</li>
-              <li>South Korea</li>
+              {data?.production_countries?.map((country: any) => (
+                <li key={country.iso_3166_1}>{country.name}</li>
+              ))}
             </ul>
           </div>
 

@@ -129,3 +129,13 @@ export const getMovieVideos = async (movieId: string | undefined) => {
   });
   return response.data;
 };
+
+
+export const getMovieDetails = async (movieId: string | undefined) => {
+  const response = await tmdbApi.get(`movie/${movieId}`, {
+    params: {
+      language: "en-US",
+    },
+  });
+  return response.data;
+};
