@@ -18,6 +18,10 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "sonner"; // Import Sonner
+import MovieDetails from "./pages/MovieDetails";
+import MovieDetailsReviews from "./pages/MovieDetailsReviews";
+import MovieDetailsRecommendations from "./pages/MovieDetailsRecommendations";
+import MovieDetailsCredits from "./pages/MovieDetailsCredits";
 
 const queryClient = new QueryClient();
 
@@ -46,6 +50,24 @@ const router = createBrowserRouter([
           { path: "/movie/top-rated", element: <MovieTopRated /> },
           { path: "/movie/upcoming", element: <MovieUpcoming /> },
           { path: "/movie/search", element: <MovieSearch /> },
+        ],
+      },
+      {
+        path: "/movie/:movieId",
+        element: <MovieDetails />,
+        children: [
+          {
+            index: true,
+            element: <MovieDetailsReviews />,
+          },
+          {
+            path: "/movie/:movieId/recommendations",
+            element: <MovieDetailsRecommendations />,
+          },
+          {
+            path: "/movie/:movieId/credits",
+            element: <MovieDetailsCredits />,
+          }, // Catch-all for nested routes
         ],
       },
     ],

@@ -84,3 +84,48 @@ export const getMoviesByGenre = async (pageNumber: number, queryGenre: number) =
   });
   return response.data;
 };
+
+export const getMoviesRecommendations = async (
+  movieId : string | undefined,
+) => {
+  const response = await tmdbApi.get(`movie/${movieId}/recommendations`, {
+    params: {
+      language: "en-US",
+      page: 1,
+    },
+  });
+  return response.data;
+};
+
+
+export const getMoviesReviews = async (movieId: string | undefined) => {
+  const response = await tmdbApi.get(`movie/${movieId}/reviews`, {
+    params: {
+      language: "en-US",
+      page: 1,
+    },
+  });
+  return response.data;
+};
+
+
+export const getMovieCredits = async (movieId: string | undefined) => {
+  const response = await tmdbApi.get(`movie/${movieId}/credits`, {
+    params: {
+      language: "en-US",
+      page: 1,
+    },
+  });
+  return response.data;
+};
+
+
+export const getMovieVideos = async (movieId: string | undefined) => {
+  const response = await tmdbApi.get(`movie/${movieId}/videos`, {
+    params: {
+      language: "en-US",
+      page: 1,
+    },
+  });
+  return response.data;
+};

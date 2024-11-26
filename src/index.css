@@ -73,6 +73,54 @@
 
 @layer utilities {
 
+  .source-sans-3-light {
+  font-family: "Source Sans 3", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200; /* Light */
+  font-style: normal;
+}
+
+.source-sans-3-regular {
+  font-family: "Source Sans 3", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400; /* Regular */
+  font-style: normal;
+}
+
+.source-sans-3-medium {
+  font-family: "Source Sans 3", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500; /* Medium */
+  font-style: normal;
+}
+
+.source-sans-3-semibold {
+  font-family: "Source Sans 3", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600; /* Semi-bold */
+  font-style: normal;
+}
+
+.source-sans-3-bold {
+  font-family: "Source Sans 3", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700; /* Bold */
+  font-style: normal;
+}
+
+.source-sans-3-extrabold {
+  font-family: "Source Sans 3", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800; /* Extra-bold */
+  font-style: normal;
+}
+
+.source-sans-3-black {
+  font-family: "Source Sans 3", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 900; /* Black */
+  font-style: normal;
+}
 .poppins-thin {
   font-family: "Poppins", sans-serif;
   font-weight: 100;
@@ -323,4 +371,13 @@ body{
 
 .hide-scrollbar::-webkit-scrollbar {
   display: none; /* Chrome, Safari and Opera */
+}
+
+.text-style{
+  @apply bg-[#1C1917] border border-[#27272a] py-2 px-2 rounded
+}
+
+.react-player-container {
+  border-radius: 10px;
+  overflow: hidden;
 }

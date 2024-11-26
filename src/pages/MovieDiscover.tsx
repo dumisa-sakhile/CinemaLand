@@ -32,6 +32,7 @@ const MovieDiscover = () => {
       setTotalPages(data.total_pages);
     }
   }, [data]);
+  
   useEffect(() => {
     if (isLoading) {
       toast.info("Loading data...");
