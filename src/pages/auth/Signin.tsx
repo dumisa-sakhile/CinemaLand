@@ -1,12 +1,17 @@
 import { Button } from "@/components/ui/button";
 import {Link} from "react-router-dom";
 import {motion} from "framer-motion";
+import Meta from "@/components/Meta";
 
 const Signin = () => {
-  document.title = "Cinema Land | Sign in";
 
   return (
     <>
+      <Meta
+        title="Cinema Land | Log in"
+        description="Discover new favorites, explore genres, and join a community of film enthusiasts. Your ultimate cinema destination, curated just for you."
+        canonicalUrl="https://cinema-land.vercel.app/login"
+      />
       <motion.div
         className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-[500px] lg:min-h-screen lg:min-w-[500px] lg:py-0 min-w-[350px]"
         initial={{ opacity: 0 }}

@@ -139,3 +139,23 @@ export const getMovieDetails = async (movieId: string | undefined) => {
   });
   return response.data;
 };
+
+
+export const getMoviesCategory = async (
+  pageNumber: number,
+  category: any ,
+  categoryId: string | undefined
+) => {
+  const response = await tmdbApi.get(`discover/movie?`, {
+    params: {
+      include_adult: false,
+      include_video: false,
+      language: "en-US",
+      page: `${pageNumber}`,
+      sort_by: "popularity.desc",
+      [category] : `${categoryId}`,
+    },
+  });
+  
+  return response.data;
+};

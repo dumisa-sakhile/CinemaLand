@@ -22,7 +22,7 @@ import MovieDetails from "./pages/MovieDetails";
 import MovieDetailsReviews from "./pages/MovieDetailsReviews";
 import MovieDetailsRecommendations from "./pages/MovieDetailsRecommendations";
 import MovieDetailsCredits from "./pages/MovieDetailsCredits";
-import MovieCollections from "./pages/MovieCollections";
+import MovieCategory from "./pages/MovieCategory";
 
 const queryClient = new QueryClient();
 
@@ -54,8 +54,8 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: "/movie/collection/:category/:categoryId",
-        element: <MovieCollections />,
+        path: "/movie/:category/:categoryId",
+        element: <MovieCategory />,
       },
       {
         path: "/movie/:movieId",

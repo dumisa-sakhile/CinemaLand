@@ -10,9 +10,10 @@ import GenreData from "@/components/GenreData";
 import { Button } from "@/components/ui/button";
 import Pagination from "@/components/Pagination";
 import { motion } from "framer-motion";
+import Meta from "@/components/Meta";
 
 const MovieDiscover = () => {
-  document.title = "Cinema Land | Movie Genres Filter";
+  
   const [genreId, setGenreId] = useState<number>(28);
   const [genreType, setGenreType] = useState<string>("Action");
 
@@ -63,61 +64,71 @@ const MovieDiscover = () => {
 
 
   return (
-    <motion.div className="flex flex-col gap-4 w-full h-scree items-center overflow-auto py-4 pb-0" initial={{ opacity: 0, scale: 0.5 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.5 }}>
-      <aside className=" absolute top-1 flex flex-row gap-2 items-center justify-between w-full rounded bg-black z-10">
-        <ul className="hide-scrollbar flex-wrap flex flex-row gap-1 items-start justify-start roboto-condensed-light  rounded py-2 px-2 text-sm">
-          {Array.from(GenreData()).map(
-            (genre: { id: number; name: string }) => (
-              <Button
-                key={genre.id}
-                id={genre.id.toLocaleString()}
-                className={
-                  genre.id === genreId
-                    ? "bg-[#FACC15] border border-yellow-900 text-yellow-900 rounded-lg"
-                    : "roboto-condensed-light bg-transparent text-white"
-                }
-                onClick={() => handleGenreChange(genre.id, genre.name)}>
-                {genre.name}
-              </Button>
-            )
-          )}
-        </ul>
-      </aside>
+    <>
+      <Meta
+        title={`${genreType} Genre Filtered Movies`}
+        description="Discover your next favorite movie! Cinema Land is your ultimate destination for movie reviews, ratings, and recommendations. Explore now!"
+        canonicalUrl={`https://cinema-land.vercel.app/movie/genre-filter`}
+      />
 
-      <main className="flex flex-row flex-wrap gap-10 min-w-[500px] p-10 pb-[40px]  rounded-lg justify-center items-center bg-[#000000]">
-        {isLoading && <Skeleton />}
-        {isError && <ApiError error={error.message} />}
+      <motion.div
+        className="flex flex-col gap-4 w-full h-scree items-center overflow-auto py-4 pb-0"
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}>
+        <aside className=" absolute top-1 flex flex-row gap-2 items-center justify-between w-full rounded bg-black z-10">
+          <ul className="hide-scrollbar flex-wrap flex flex-row gap-1 items-start justify-start roboto-condensed-light  rounded py-2 px-2 text-sm">
+            {Array.from(GenreData()).map(
+              (genre: { id: number; name: string }) => (
+                <Button
+                  key={genre.id}
+                  id={genre.id.toLocaleString()}
+                  className={
+                    genre.id === genreId
+                      ? "bg-[#FACC15] border border-yellow-900 text-yellow-900 rounded-lg"
+                      : "roboto-condensed-light bg-transparent text-white"
+                  }
+                  onClick={() => handleGenreChange(genre.id, genre.name)}>
+                  {genre.name}
+                </Button>
+              )
+            )}
+          </ul>
+        </aside>
 
-        {data?.results.map((movie: any) => (
-          <MovieCard
-            key={movie.id}
-            voteCount={movie.vote_count}
-            id={movie.id}
-            title={movie.title}
-            releaseDate={movie.release_date}
-            rating={movie.vote_average}
-            poster={movie.poster_path}
+        <main className="flex flex-row flex-wrap gap-10 min-w-[500px] p-10 pb-[40px]  rounded-lg justify-center items-center bg-[#000000]">
+          {isLoading && <Skeleton />}
+          {isError && <ApiError error={error.message} />}
+
+          {data?.results.map((movie: any) => (
+            <MovieCard
+              key={movie.id}
+              voteCount={movie.vote_count}
+              id={movie.id}
+              title={movie.title}
+              releaseDate={movie.release_date}
+              rating={movie.vote_average}
+              poster={movie.poster_path}
+            />
+          ))}
+        </main>
+        {/* Display popular movies */}
+
+        <div className="relative z-20 w-full flex items-center justify-center bg-black py-20">
+          <MovieFooter />
+        </div>
+
+        {/* Pagination */}
+        {!isError && !isLoading && (
+          <Pagination
+            pageNumber={pageNumber}
+            totalPages={totalPages}
+            setPageNumber={setPageNumber}
           />
-        ))}
-      </main>
-      {/* Display popular movies */}
-
-      <div className="relative z-20 w-full flex items-center justify-center bg-black py-20">
-        <MovieFooter />
-      </div>
-
-      {/* Pagination */}
-      {!isError && !isLoading && (
-        <Pagination
-          pageNumber={pageNumber}
-          totalPages={totalPages}
-          setPageNumber={setPageNumber}
-        />
-      )}
-      {/* Pagination */}
-    </motion.div>
+        )}
+        {/* Pagination */}
+      </motion.div>
+    </>
   );
 };
 

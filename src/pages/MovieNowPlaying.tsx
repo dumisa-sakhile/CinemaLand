@@ -8,9 +8,10 @@ import MovieFooter from "@/components/MovieFooter";
 import { toast } from "sonner";
 import Pagination from "@/components/Pagination";
 import { motion } from "framer-motion";
+import Meta from "@/components/Meta";
 
 const MovieNowPlaying = () => {
-  document.title = "Cinema Land | Now Playing Movies";
+  
   const [pageNumber, setPageNumber] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(9);
 
@@ -46,49 +47,56 @@ const MovieNowPlaying = () => {
 
 
   return (
-    <motion.div
-      className="flex flex-col gap-4 w-full h-screen overflow-auto"
-      initial={{ opacity: 0, scale: 0.5 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.5 }}>
-      <header className="flex flex-col gap-2 items-center justify-center text-center">
-        <h6 className="text-md font-bold oswald-regular text-[#FACC15] ">
-          Now Playing Movies Page
-        </h6>
-      </header>
-      <main className="flex flex-row flex-wrap gap-10 min-w-[500px] p-10 pb-[40px]  rounded-lg justify-center items-center bg-[#000000]">
-        {isLoading && <Skeleton />}
+    <>
+      <Meta
+        title={`Now Playing Movies`}
+        description="Discover your next favorite movie! Cinema Land is your ultimate destination for movie reviews, ratings, and recommendations. Explore now!"
+        canonicalUrl={`https://cinema-land.vercel.app/movie/now-playing`}
+      />
+      <motion.div
+        className="flex flex-col gap-4 w-full h-screen overflow-auto"
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}>
+        <header className="flex flex-col gap-2 items-center justify-center text-center">
+          <h6 className="text-md font-bold oswald-regular text-[#FACC15] ">
+            Now Playing Movies Page
+          </h6>
+        </header>
+        <main className="flex flex-row flex-wrap gap-10 min-w-[500px] p-10 pb-[40px]  rounded-lg justify-center items-center bg-[#000000]">
+          {isLoading && <Skeleton />}
 
-        {isError && <ApiError error={error.message} />}
+          {isError && <ApiError error={error.message} />}
 
-        {data?.results?.map((movie: any) => (
-          <MovieCard
-            key={movie.id}
-            voteCount={movie.vote_count}
-            id={movie.id}
-            title={movie.title}
-            releaseDate={movie.release_date}
-            rating={movie.vote_average}
-            poster={movie.poster_path}
+          {data?.results?.map((movie: any) => (
+            <MovieCard
+              key={movie.id}
+              voteCount={movie.vote_count}
+              id={movie.id}
+              title={movie.title}
+              releaseDate={movie.release_date}
+              rating={movie.vote_average}
+              poster={movie.poster_path}
+            />
+          ))}
+        </main>
+        {/* Display popular movies */}
+
+        <div className="relative z-20 w-full flex items-center justify-center bg-black py-20">
+          <MovieFooter />
+        </div>
+
+        {/* Pagination */}
+        {!isError && !isLoading && (
+          <Pagination
+            pageNumber={pageNumber}
+            totalPages={totalPages}
+            setPageNumber={setPageNumber}
           />
-        ))}
-      </main>
-      {/* Display popular movies */}
-
-      <div className="relative z-20 w-full flex items-center justify-center bg-black py-20">
-        <MovieFooter />
-      </div>
-
-      {/* Pagination */}
-      {!isError && !isLoading && (
-        <Pagination
-          pageNumber={pageNumber}
-          totalPages={totalPages}
-          setPageNumber={setPageNumber}
-        />
-      )}
-      {/* Pagination */}
-    </motion.div>
+        )}
+        {/* Pagination */}
+      </motion.div>
+    </>
   );
 };
 
