@@ -44,9 +44,6 @@ const MovieUpcoming = () => {
     );
   }, []);
 
-  {
-   
-  }
 
   return (
     <motion.div

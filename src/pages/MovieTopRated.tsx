@@ -43,9 +43,6 @@ const MovieTopRated = () => {
      );
    }, []);
 
-  {
-   
-  }
 
   return (
     <motion.div

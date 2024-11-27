@@ -54,7 +54,7 @@ const MovieSearch = () => {
   }, [data]);
 
   useEffect(() => {
-    search.trim() ?? toast.info(`Search results for: ${search}`);
+    toast.info(`Search results for: ${search.toUpperCase()}`);
   }, [data]);
 
 

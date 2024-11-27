@@ -44,8 +44,6 @@ const MovieNowPlaying = () => {
      );
    }, []);
 
-  {
-  }
 
   return (
     <motion.div

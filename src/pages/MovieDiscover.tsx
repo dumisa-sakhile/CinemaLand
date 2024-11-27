@@ -51,14 +51,37 @@ const MovieDiscover = () => {
     );
   }, []);
 
-  {
+   useEffect(() => {
+     if (data) {
+       setTotalPages(data.total_pages);
+     }
+   }, [data]);
 
-  }
+   useEffect(() => {
+     if (isLoading) {
+       toast.info("Loading data...");
+     }
+   }, [isLoading]);
+
+   useEffect(() => {
+     if (isError) {
+       toast.error(`Error loading data:  ${error.message}`);
+     }
+   }, [isError, error]);
+
+   useEffect(() => {
+     toast.success(
+       "Welcome to the Trending Movies Page on TMDB. These trends are based on this day or week."
+     );
+   }, []);
+
+   useEffect(() => {
+     toast.success(`Filtered according to trending movies this: ${period.toLocaleUpperCase()}.`);
+   }, [period]);
+
 
   return (
-    <motion.div
-      className="flex flex-col gap-4 w-full h-scree items-center overflow-auto py-4"
-      initial={{ opacity: 0, scale: 0.5 }}
+    <motion.div className="flex flex-col gap-4 w-full h-scree items-center overflow-auto py-4" initial={{ opacity: 0, scale: 0.5 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}>
       <aside className="flex flex-row gap-2 items-center justify-between w-[80%] rounded">

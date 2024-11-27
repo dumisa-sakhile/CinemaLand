@@ -27,43 +27,45 @@ const MovieDiscover = () => {
 
   const handleGenreChange = (id: number, name: string) => {
     setGenreId(id);
-    setGenreType(name)
+    setGenreType(name);
     setPageNumber(1); // Reset page number when genre changes
     refetch(); // Refetch data when genre changes
   };
+
+  useEffect(() => {
+    if (data) {
+      setTotalPages(data.total_pages);
+    }
+  }, [data]);
+  useEffect(() => {
+    if (isLoading) {
+      toast.info("Loading data...");
+    }
+  }, [isLoading]);
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(`Error loading data:  ${error.message}`);
+    }
+  }, [isError, error]);
+
+  useEffect(() => {
+    toast.success(
+      "Welcome to the Genre Filtered Movies Page! Please use the Genre Filter to find your favorite movies."
+    );
+  }, []);
+
+  useEffect(() => {
+    toast.info(`Movies filtered by Genre: ${genreType}`);
+  }, [genreId, genreType]);
+
   {
   }
 
-   useEffect(() => {
-     if (data) {
-       setTotalPages(data.total_pages);
-     }
-   }, [data]);
-   useEffect(() => {
-     if (isLoading) {
-       toast.info("Loading data...");
-     }
-   }, [isLoading]);
-
-   useEffect(() => {
-     if (isError) {
-       toast.error(`Error loading data:  ${error.message}`);
-     }
-   }, [isError, error]);
-
-   useEffect(() => {
-     toast.success(
-       "Welcome to the Genre Filtered Movies Page! Please use the Genre Filter to find your favorite movies."
-     );
-   }, []);
-
-   useEffect(() => {
-     toast.info(`Movies filtered by Genre: ${genreType}`);
-   }, [genreId, genreType]);
-
-
   return (
-    <motion.div className="flex flex-col gap-4 w-full h-scree items-center overflow-auto py-4 pb-0" initial={{ opacity: 0, scale: 0.5 }}
+    <motion.div
+      className="flex flex-col gap-4 w-full h-scree items-center overflow-auto py-4 pb-0"
+      initial={{ opacity: 0, scale: 0.5 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}>
       <aside className=" absolute top-1 flex flex-row gap-2 items-center justify-between w-full rounded bg-black z-10">

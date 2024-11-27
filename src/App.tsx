@@ -22,6 +22,7 @@ import MovieDetails from "./pages/MovieDetails";
 import MovieDetailsReviews from "./pages/MovieDetailsReviews";
 import MovieDetailsRecommendations from "./pages/MovieDetailsRecommendations";
 import MovieDetailsCredits from "./pages/MovieDetailsCredits";
+import MovieCollections from "./pages/MovieCollections";
 
 const queryClient = new QueryClient();
 
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
           { path: "/movie/upcoming", element: <MovieUpcoming /> },
           { path: "/movie/search", element: <MovieSearch /> },
         ],
+      },
+      {
+        path: "/movie/collection/:category/:categoryId",
+        element: <MovieCollections />,
       },
       {
         path: "/movie/:movieId",
