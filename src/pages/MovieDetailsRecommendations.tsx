@@ -5,10 +5,6 @@ import { getMoviesRecommendations } from "@/components/Api";
 import { useParams } from "react-router-dom";
 import Skeleton from "@/components/Skeleton";
 import ApiError from "@/components/ApiError";
-import { useEffect } from "react";
-import { toast } from "sonner";
-
-
 
 
 const MovieDetailsRecommendations = () => {
@@ -21,23 +17,7 @@ const { data, isLoading, isError, error } = useQuery({
 });
 
 
-useEffect(() => {
-  if (isLoading) {
-    toast.info("Loading data...");
-  }
-}, [isLoading]);
 
-useEffect(() => {
-  if (isError) {
-    toast.error(`Error loading data:  ${error.message}`);
-  }
-}, [isError, error]);
-
-useEffect(() => {
-  toast.success(
-    `Recommendations for ${movieId} loaded successfully!`
-  );
-}, []);
 
   return (
     <motion.section

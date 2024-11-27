@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom";
 import Skeleton from "@/components/Skeleton";
 import ApiError from "@/components/ApiError";
 import { useEffect } from "react";
-import { toast } from "sonner";
 import CastCard from "@/components/CastCard";
 
 const MovieDetailsCredits = () => {
@@ -16,17 +15,6 @@ const MovieDetailsCredits = () => {
     queryFn: () => getMovieCredits(movieId),
   });
 
-  useEffect(() => {
-    if (isLoading) {
-      toast.info("Loading data...");
-    }
-  }, [isLoading]);
-
-  useEffect(() => {
-    if (isError) {
-      toast.error(`Error loading data:  ${error.message}`);
-    }
-  }, [isError, error]);
 
    useEffect(() => {
     refetch();

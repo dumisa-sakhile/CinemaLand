@@ -7,6 +7,7 @@ import ApiError from "@/components/ApiError";
 import MovieFooter from "@/components/MovieFooter";
 import { toast } from "sonner";
 import Pagination from "@/components/Pagination";
+import { motion } from "framer-motion";
 
 const MovieSearch = () => {
   document.title = "Cinema Land | Search Movies";
@@ -62,7 +63,11 @@ const MovieSearch = () => {
   };
 
   return (
-    <div className="flex flex-col gap-4 w-full h-screen overflow-auto items-center">
+    <motion.div
+      className="flex flex-col gap-4 w-full h-screen overflow-auto items-center"
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5 }}>
       {/* search */}
       <aside className="flex flex-row gap-2 items-center justify-center  py-4 w-[90%] rounded">
         <h6 className="text-md font-bold oswald-regular text-[#FACC15] ">
@@ -154,7 +159,7 @@ const MovieSearch = () => {
         />
       )}
       {/* Pagination */}
-    </div>
+    </motion.div>
   );
 };
 

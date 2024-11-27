@@ -7,6 +7,7 @@ import ApiError from "@/components/ApiError";
 import MovieFooter from "@/components/MovieFooter";
 import { toast } from "sonner";
 import Pagination from "@/components/Pagination";
+import { motion } from "framer-motion";
 
 const MovieTopRated = () => {
   document.title = "Cinema Land | Top rated Movies";
@@ -47,7 +48,11 @@ const MovieTopRated = () => {
   }
 
   return (
-    <div className="flex flex-col gap-4 w-full h-screen overflow-auto">
+    <motion.div
+      className="flex flex-col gap-4 w-full h-screen overflow-auto"
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5 }}>
       <header className="flex flex-col gap-2 items-center justify-center text-center">
         <h6 className="text-md font-bold oswald-regular text-[#FACC15] ">
           Top Rated Movies Page
@@ -85,7 +90,7 @@ const MovieTopRated = () => {
         />
       )}
       {/* Pagination */}
-    </div>
+    </motion.div>
   );
 };
 

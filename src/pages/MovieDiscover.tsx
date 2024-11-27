@@ -7,6 +7,7 @@ import ApiError from "@/components/ApiError";
 import MovieFooter from "@/components/MovieFooter";
 import { toast } from "sonner";
 import Pagination from "@/components/Pagination";
+import { motion } from "framer-motion";
 
 const MovieDiscover = () => {
   document.title = "Cinema Land | Movie Discovery";
@@ -55,7 +56,11 @@ const MovieDiscover = () => {
   }
 
   return (
-    <div className="flex flex-col gap-4 w-full h-scree items-center overflow-auto py-4">
+    <motion.div
+      className="flex flex-col gap-4 w-full h-scree items-center overflow-auto py-4"
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5 }}>
       <aside className="flex flex-row gap-2 items-center justify-between w-[80%] rounded">
         <h6 className="text-md font-bold oswald-regular text-[#FACC15] ">
           Trending Movies Page
@@ -119,7 +124,7 @@ const MovieDiscover = () => {
         />
       )}
       {/* Pagination */}
-    </div>
+    </motion.div>
   );
 };
 

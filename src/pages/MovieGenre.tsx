@@ -9,6 +9,7 @@ import { toast } from "sonner";
 import GenreData from "@/components/GenreData";
 import { Button } from "@/components/ui/button";
 import Pagination from "@/components/Pagination";
+import { motion } from "framer-motion";
 
 const MovieDiscover = () => {
   document.title = "Cinema Land | Movie Genres Filter";
@@ -64,7 +65,9 @@ const MovieDiscover = () => {
   }
 
   return (
-    <div className="flex flex-col gap-4 w-full h-scree items-center overflow-auto py-4 pb-0">
+    <motion.div className="flex flex-col gap-4 w-full h-scree items-center overflow-auto py-4 pb-0" initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5 }}>
       <aside className=" absolute top-1 flex flex-row gap-2 items-center justify-between w-full rounded bg-black z-10">
         <ul className="hide-scrollbar flex-wrap flex flex-row gap-1 items-start justify-start roboto-condensed-light  rounded py-2 px-2 text-sm">
           {Array.from(GenreData()).map(
@@ -116,7 +119,7 @@ const MovieDiscover = () => {
         />
       )}
       {/* Pagination */}
-    </div>
+    </motion.div>
   );
 };
 

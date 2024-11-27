@@ -25,6 +25,10 @@ import { useQuery } from "@tanstack/react-query";
 import { getMovieDetails, getMovieVideos } from "@/components/Api";
 import Skeleton from "@/components/Skeleton";
 import ApiError from "@/components/ApiError";
+import { useEffect } from "react";
+import { toast } from "sonner";
+import { useLayoutEffect } from "react";
+
 
 
 
@@ -42,6 +46,22 @@ const MovieDetails = () => {
     queryKey: ["video", movieId],
     queryFn: () => getMovieVideos(movieId),
   });
+
+  useEffect(() => {
+    if (isLoading) {
+      toast.info("Loading movie details...");
+    }
+  }, [isLoading]);
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(`Error movie details for ${movieId} Error:  ${error.message}`);
+    }
+  }, [isError, error]);
+
+  useLayoutEffect(() => {
+    toast.success(`Movie details for ${data?.title} loaded successfully!`);
+  }, [data]);
 
   const videoUrls: string[] = videoData?.results
     .sort((a: any, b: any) => {
@@ -69,8 +89,8 @@ const MovieDetails = () => {
   return (
     <motion.div
       className="absolute flex items-center justify-center w-full h-screen overflow-hidden"
-      initial={{ scale: 2 }}
-      animate={{ scale: 1 }}
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}>
       {/* background image */}
       <img
