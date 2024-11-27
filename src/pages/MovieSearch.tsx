@@ -65,7 +65,7 @@ const MovieSearch = () => {
     <div className="flex flex-col gap-4 w-full h-screen overflow-auto items-center">
       {/* search */}
       <aside className="flex flex-row gap-2 items-center justify-center  py-4 w-[90%] rounded">
-        <h6 className="text-sm font-bold oswald-regular text-[#FACC15] ">
+        <h6 className="text-md font-bold oswald-regular text-[#FACC15] ">
           Movies Search Page
         </h6>
 
@@ -114,7 +114,7 @@ const MovieSearch = () => {
           </div>
         </section>
 
-        <p className="text-sm oswald-regular">
+        <p className="text-md oswald-regular">
           Search For the Movie{" "}
           <span className="text-[#FACC15] uppercase">{search}</span>
         </p>
