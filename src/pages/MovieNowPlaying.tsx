@@ -49,7 +49,7 @@ const MovieNowPlaying = () => {
   return (
     <div className="flex flex-col gap-4 w-full h-screen overflow-auto">
       <header className="flex flex-col gap-2 items-center justify-center text-center">
-        <h6 className="text-sm font-bold oswald-regular text-[#FACC15] ">
+        <h6 className="text-md font-bold oswald-regular text-[#FACC15] ">
           Now Playing Movies Page
         </h6>
       </header>

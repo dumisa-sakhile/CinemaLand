@@ -64,8 +64,8 @@ const MovieDiscover = () => {
   }
 
   return (
-    <div className="flex flex-col gap-4 w-full h-scree items-center overflow-auto py-4">
-      <aside className="flex flex-row gap-2 items-center justify-between w-full rounded">
+    <div className="flex flex-col gap-4 w-full h-scree items-center overflow-auto py-4 pb-0">
+      <aside className=" absolute top-1 flex flex-row gap-2 items-center justify-between w-full rounded bg-black z-10">
         <ul className="hide-scrollbar flex-wrap flex flex-row gap-1 items-start justify-start roboto-condensed-light  rounded py-2 px-2 text-sm">
           {Array.from(GenreData()).map(
             (genre: { id: number; name: string }) => (

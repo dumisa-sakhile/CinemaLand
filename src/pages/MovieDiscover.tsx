@@ -6,8 +6,6 @@ import Skeleton from "@/components/Skeleton";
 import ApiError from "@/components/ApiError";
 import MovieFooter from "@/components/MovieFooter";
 import { toast } from "sonner";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendarDay,faCalendarWeek } from "@fortawesome/free-solid-svg-icons";
 import Pagination from "@/components/Pagination";
 
 const MovieDiscover = () => {
@@ -59,33 +57,32 @@ const MovieDiscover = () => {
   return (
     <div className="flex flex-col gap-4 w-full h-scree items-center overflow-auto py-4">
       <aside className="flex flex-row gap-2 items-center justify-between w-[80%] rounded">
-        <h6 className="text-sm font-bold oswald-regular text-[#FACC15] ">
+        <h6 className="text-md font-bold oswald-regular text-[#FACC15] ">
           Trending Movies Page
         </h6>
 
-        <div className="relative z-20 min-w-[200px] flex items-center justify-between bg-[#1C1917] border border-[#27272a]   rounded">
+        <div className="relative z-20 min-w-[200px] flex items-center justify-between   rounded">
           <button
-            className={`px-10 py-2 rounded flex items-center justify-center gap-4 ${
+            className={`px-10 py-2 rounded-md flex items-center justify-center gap-4 ${
               period === "day"
-                ? "bg-[#FACC15] text-black"
-                : "bg-[#1C1917] text-white"
+                ? "bg-[#FACC15] text-yellow-950"
+                : "bg-inherit text-white"
             }`}
             onClick={() => handlePeriodChange("day")}>
-            <FontAwesomeIcon icon={faCalendarDay} /> Day
+            Day
           </button>
           <button
-            className={`px-10 py-2 rounded flex items-center justify-center gap-4 ${
+            className={`px-10 py-2 rounded-md flex items-center justify-center gap-4 ${
               period === "week"
-                ? "bg-[#FACC15] text-black"
-                : "bg-[#1C1917] text-white"
+                ? "bg-[#FACC15] text-yellow-950"
+                : "bg-inherit text-white"
             }`}
             onClick={() => handlePeriodChange("week")}>
-            <FontAwesomeIcon icon={faCalendarWeek} />
             Week
           </button>
         </div>
 
-        <p className="text-sm">
+        <p className="text-md">
           Trending movies on TMDB this{" "}
           <span className="text-[#FACC15] uppercase font-bold">{period}</span>.
         </p>

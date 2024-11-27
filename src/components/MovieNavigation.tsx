@@ -37,7 +37,7 @@ const MovieNavigation = () => {
   return (
     <>
       <motion.nav
-        className="bg-[#1C1917] border border-[#27272a] fixed left-10 top-12  w-[60px] h-[90%] z-40  rounded-md"
+        className="bg-[#1C1917] border border-[#27272a] fixed left-10 bottom-4  w-[60px] h-[90%] z-40  rounded-md"
         initial={{ scale: 2 }}
         animate={{ scale: 1 }}
         transition={{ duration: 0.5 }}>
