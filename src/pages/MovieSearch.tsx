@@ -6,6 +6,7 @@ import Skeleton from "@/components/Skeleton";
 import ApiError from "@/components/ApiError";
 import MovieFooter from "@/components/MovieFooter";
 import { toast } from "sonner";
+import Pagination from "@/components/Pagination";
 
 const MovieSearch = () => {
   document.title = "Cinema Land | Search Movies";
@@ -62,8 +63,6 @@ const MovieSearch = () => {
 
   return (
     <div className="flex flex-col gap-4 w-full h-screen overflow-auto items-center">
-     
-
       {/* search */}
       <aside className="flex flex-row gap-2 items-center justify-center  py-4 w-[90%] rounded">
         <h6 className="text-sm font-bold oswald-regular text-[#FACC15] ">
@@ -104,25 +103,21 @@ const MovieSearch = () => {
             />
             <button
               type="button"
-              className="text-black absolute end-2.5 bottom-2.5 bg-[#FACC15] hover:bg-[#FACC15]/80 focus:ring-4 focus:outline-none focus:ring-[#FACC15]/50 font-medium rounded-lg text-sm px-4 py-2" onClick={
-                ()=> {
-                  
-                    setPageNumber(1);
-                    refetch();
-                  
-                   
-              }} disabled={search.trim() === ""}>
+              className="text-black absolute end-2.5 bottom-2.5 bg-[#FACC15] hover:bg-[#FACC15]/80 focus:ring-4 focus:outline-none focus:ring-[#FACC15]/50 font-medium rounded-lg text-sm px-4 py-2"
+              onClick={() => {
+                setPageNumber(1);
+                refetch();
+              }}
+              disabled={search.trim() === ""}>
               Search
             </button>
           </div>
         </section>
 
-        
-          <p className="text-sm oswald-regular">
-            Search For the Movie{" "}
-            <span className="text-[#FACC15] uppercase">{search}</span>
-          </p>
-        
+        <p className="text-sm oswald-regular">
+          Search For the Movie{" "}
+          <span className="text-[#FACC15] uppercase">{search}</span>
+        </p>
       </aside>
       {/* search */}
 
@@ -130,7 +125,7 @@ const MovieSearch = () => {
         {isLoading && <Skeleton />}
         {isError && <ApiError error={error.message} />}
 
-{data?.results.length === 0 && <Skeleton />}
+        {data?.results.length === 0 && <Skeleton />}
 
         {data?.results.map((movie: any) => (
           <MovieCard
@@ -152,32 +147,11 @@ const MovieSearch = () => {
       {/* Display popular movies */}
       {/* Pagination */}
       {!isError && !isLoading && (
-        <footer className="fixed bottom-2 w-full flex items-center justify-center  py-4    roboto-condensed-regular  bg-inherit shadow-lg ">
-          <div className="flex flex-row gap-6 items-center justify-center bg-[#1C1917] border border-[#27272a] px-32 py-4 rounded">
-            {/* Help text */}
-            <span className="text-sm text-gray-400 ">
-              Showing{" "}
-              <span className="font-semibold text-white">{pageNumber}</span> to
-              of <span className="font-semibold text-white">{totalPages}</span>{" "}
-              Entries
-            </span>
-            {/* Buttons */}
-            <div className="inline-flex mt-2 xs:mt-0">
-              <button
-                className="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-red-600 rounded-s hover:bg-red-700"
-                disabled={pageNumber <= 1}
-                onClick={() => setPageNumber(pageNumber - 1)}>
-                Prev
-              </button>
-              <button
-                className="flex items-center justify-center px-3 h-8 text-sm font-medium text-white bg-green-600 border-0 border-s border-gray-700 rounded-e hover:bg-gree7-900"
-                disabled={pageNumber >= totalPages}
-                onClick={() => setPageNumber(pageNumber + 1)}>
-                Next
-              </button>
-            </div>
-          </div>
-        </footer>
+        <Pagination
+          pageNumber={pageNumber}
+          totalPages={totalPages}
+          setPageNumber={setPageNumber}
+        />
       )}
       {/* Pagination */}
     </div>

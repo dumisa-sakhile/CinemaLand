@@ -358,7 +358,7 @@ body{
 }
 
 :disabled{
-  @apply cursor-not-allowed bg-[#27272a]
+  @apply cursor-not-allowed
 }
 
 
