@@ -4,7 +4,8 @@ import {motion} from "framer-motion";
 import Meta from "@/components/Meta";
 
 const Signup = () => {
-  
+
+
   return (
     <>
       <Meta
