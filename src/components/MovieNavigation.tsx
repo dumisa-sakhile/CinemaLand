@@ -164,7 +164,7 @@ const MovieNavigation = () => {
               </footer>
             </Tippy>
           </DrawerTrigger>
-          <DrawerContent className=" bg-black border-none text-white bg-opacity-5">
+          <DrawerContent className=" bg-black border-none text-white bg-opacity-75">
             <DrawerHeader>
               <DrawerTitle></DrawerTitle>
               <DrawerDescription></DrawerDescription>

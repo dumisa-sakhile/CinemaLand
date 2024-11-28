@@ -1,6 +1,6 @@
 import { motion } from "framer-motion"
 import { Link } from "react-router-dom";
-import posterFallback from "/public/poster.png?url";
+import posterFallback from "/poster.png?url";
 interface MovieType {
   id: string;
   title: string;

@@ -1,4 +1,4 @@
-import Poster from "/public/profile.svg";
+import Poster from "/profile.svg";
 
 
 interface CastCardProps {

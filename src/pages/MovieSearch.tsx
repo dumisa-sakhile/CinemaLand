@@ -55,9 +55,12 @@ const MovieSearch = () => {
   }, [data]);
 
   useEffect(() => {
-    toast.info(`Search results for: ${search.toUpperCase()}`);
+    if(search.length > 0) {
+      toast.info(`Search results for: ${search.toUpperCase()}`);
+    }
   }, [data]);
 
+  
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);

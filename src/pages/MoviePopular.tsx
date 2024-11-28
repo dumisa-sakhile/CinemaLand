@@ -85,6 +85,8 @@ useEffect(() => {
           <MovieFooter />
         </div>
 
+  
+
         {/* Display popular movies */}
         {/* Pagination */}
         {!isError && !isLoading && (

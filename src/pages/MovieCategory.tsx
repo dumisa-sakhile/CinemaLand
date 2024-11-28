@@ -35,6 +35,8 @@ const MovieCategory = () => {
 useEffect(() => {
   if (data) {
     setTotalPages(data.total_pages);
+    toast.success(`Movie Category filtered by the ${searchParams.get("type")} of
+            ${searchParams.get("name")}`);
   }
 }, [data]);
 
@@ -61,11 +63,12 @@ useEffect(() => {
         )}`}
       />
       <motion.div
-        className="flex flex-col gap-4 w-full h-screen items-center overflow-auto py-4 pb-0"
+        className="absolute top-0 flex flex-col gap-4 w-full h-screen items-center overflow-auto py-4 pb-0 pt-[35px]"
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}>
-        <aside className=" absolute top-1 flex flex-row gap-2 items-center justify-center w-full rounded bg-black z-10">
+
+        <aside className="fixed top-0 flex flex-row gap-2 items-center justify-center w-full rounded bg-black z-10 py-4">
           <h1 className="text-md font-bold text-[#FACC15] oswald-regular pt-4">
             Movie Category filtered by the {searchParams.get("type")} :&nbsp;
             {searchParams.get("name")}
@@ -87,7 +90,7 @@ useEffect(() => {
           </div>
         </aside>
 
-        <main className="flex flex-row flex-wrap gap-10 min-w-[500px] p-10 pb-[40px]  rounded-lg justify-center items-center bg-[#000000]">
+        <main className="flex flex-row flex-wrap gap-10 min-w-[500px]  p-10 pb-[40px]  rounded-lg justify-center items-center bg-[#000000] ">
           {isLoading && <Skeleton />}
           {isError && <ApiError error={error.message} />}
 

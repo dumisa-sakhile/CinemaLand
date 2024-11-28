@@ -135,7 +135,7 @@ const MovieDetails = () => {
                 <FontAwesomeIcon icon={faPlus} />
                 add to watchlist
               </Button>
-              {!videoLoading && (
+              {!videoLoading && videoUrls.length > 0 && (
                 <Dialog>
                   <DialogTrigger asChild>
                     <Button variant="secondary">
@@ -197,70 +197,78 @@ const MovieDetails = () => {
             </p>
 
             {/* genres */}
-            <div className="flex flex-col gap-4 w-full">
-              <h6 className="text-sm roboto-condensed-regular">Genres</h6>
-              <ul className="flex gap-3 flex-wrap *:py-2 ]*:rounded-full *:bg-opacity-75 w-1/2 text-md  roboto-condensed-light  *:cursor-pointer text-[#FACC15] *:underline hover:*:text-white hover:*:no-underline">
-                {data?.genres?.map((genre: any) => (
-                  <li key={genre.id}>
-                    <Link
-                      to={`/movie/with_genres/${genre.id}?type=genre&name=${genre.name}`}>
-                      {genre.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {data?.genres?.length > 0 && (
+              <div className="flex flex-col gap-4 w-full">
+                <h6 className="text-sm roboto-condensed-regular">Genres</h6>
+                <ul className="flex gap-3 flex-wrap *:py-2 ]*:rounded-full *:bg-opacity-75 w-1/2 text-md  roboto-condensed-light  *:cursor-pointer text-[#FACC15] *:underline hover:*:text-white hover:*:no-underline">
+                  {data?.genres?.map((genre: any) => (
+                    <li key={genre.id}>
+                      <Link
+                        to={`/movie/with_genres/${genre.id}?type=genre&name=${genre.name}`}>
+                        {genre.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
             {/* spoken languages */}
-            <div className="flex flex-col gap-4 w-full">
-              <h6 className="text-sm roboto-condensed-regular">
-                Spoken languages
-              </h6>
-              <ul className="flex gap-3 flex-wrap *:py-2 ]*:rounded-full *:bg-opacity-75 w-1/2 text-md  roboto-condensed-light  *:cursor-pointer text-[#FACC15] *:underline hover:*:text-white hover:*:no-underline">
-                {data?.spoken_languages?.map((language: any) => (
-                  <li key={language.english_name}>
-                    <Link
-                      to={`/movie/with_original_language/${language.iso_639_1}?type=language&name=${language.english_name}`}>
-                      {language.english_name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {data?.spoken_languages?.length > 0 && (
+              <div className="flex flex-col gap-4 w-full">
+                <h6 className="text-sm roboto-condensed-regular">
+                  Spoken languages
+                </h6>
+                <ul className="flex gap-3 flex-wrap *:py-2 ]*:rounded-full *:bg-opacity-75 w-1/2 text-md  roboto-condensed-light  *:cursor-pointer text-[#FACC15] *:underline hover:*:text-white hover:*:no-underline">
+                  {data?.spoken_languages?.map((language: any) => (
+                    <li key={language.english_name}>
+                      <Link
+                        to={`/movie/with_original_language/${language.iso_639_1}?type=language&name=${language.english_name}`}>
+                        {language.english_name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
             {/* production companies */}
-            <div className="flex flex-col gap-4 w-full">
-              <h6 className="text-sm roboto-condensed-regular">
-                Production companies
-              </h6>
-              <ul className="flex gap-3 flex-wrap *:py-2 ]*:rounded-full *:bg-opacity-75 w-1/2 text-md  roboto-condensed-light  *:cursor-pointer text-[#FACC15] *:underline hover:*:text-white hover:*:no-underline">
-                {data?.production_companies?.map((company: any) => (
-                  <li key={company.id}>
-                    <Link
-                      to={`/movie/with_companies/${company.id}?type=company&name=${company.name}`}>
-                      {company.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {data?.production_companies?.length > 0 && (
+              <div className="flex flex-col gap-4 w-full">
+                <h6 className="text-sm roboto-condensed-regular">
+                  Production companies
+                </h6>
+                <ul className="flex gap-3 flex-wrap *:py-2 ]*:rounded-full *:bg-opacity-75 w-1/2 text-md  roboto-condensed-light  *:cursor-pointer text-[#FACC15] *:underline hover:*:text-white hover:*:no-underline">
+                  {data?.production_companies?.map((company: any) => (
+                    <li key={company.id}>
+                      <Link
+                        to={`/movie/with_companies/${company.id}?type=company&name=${company.name}`}>
+                        {company.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
             {/* production countries */}
-            <div className="flex flex-col gap-4 w-full">
-              <h6 className="text-sm roboto-condensed-regular">
-                Production countries
-              </h6>
-              <ul className="flex gap-3 flex-wrap *:py-2 ]*:rounded-full *:bg-opacity-75 w-1/2 text-md  roboto-condensed-light  *:cursor-pointer text-[#FACC15] *:underline hover:*:text-white hover:*:no-underline">
-                {data?.production_countries?.map((country: any) => (
-                  <li key={country.iso_3166_1}>
-                    <Link
-                      to={`/movie/with_origin_country/${country.iso_3166_1}?type=country&name=${country.name}`}>
-                      {country.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {data?.production_countries?.length > 0 && (
+              <div className="flex flex-col gap-4 w-full">
+                <h6 className="text-sm roboto-condensed-regular">
+                  Production countries
+                </h6>
+                <ol className="flex gap-3 flex-wrap *:py-2 ]*:rounded-full *:bg-opacity-75 w-1/2 text-md  roboto-condensed-light  *:cursor-pointer text-[#FACC15] *:underline hover:*:text-white hover:*:no-underline">
+                  {data?.production_countries?.map((country: any) => (
+                    <li key={country.iso_3166_1}>
+                      <Link
+                        to={`/movie/with_origin_country/${country.iso_3166_1}?type=country&name=${country.name}`}>
+                        {country.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            )}
 
             {/* home and back */}
             <div className="flex gap-4 w-[100px] absolute top-4 left-4">
