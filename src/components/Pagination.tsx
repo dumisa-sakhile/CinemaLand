@@ -14,11 +14,11 @@ const Pagination = ({pageNumber, totalPages, setPageNumber} : PaginationType) =>
             <span className="text-md text-white ">
               Showing{" "}
               <span className="font-semibold text-[#FACC15]">{pageNumber}</span>{" "}
-              to of{" "}
+             of{" "}
               <span className="font-semibold text-[#facc15]">
                 {totalPages}
               </span>{" "}
-              Entries
+              Pages
             </span>
             {/* Buttons */}
             <div className="inline-flex items-center justify-center gap-2 mt-2 xs:mt-0 w-[200px]">
