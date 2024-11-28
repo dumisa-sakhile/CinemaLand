@@ -182,7 +182,9 @@ const MovieDetails = () => {
               </p>
               <p>
                 Duration:{" "}
-                <span className="text-[#FACC15]">{data?.runtime} min</span>
+                <span className="text-[#FACC15]">{`${Math.floor(
+                  data?.runtime / 60
+                )}h ${data?.runtime % 60}m`}</span>
               </p>
             </article>
 
