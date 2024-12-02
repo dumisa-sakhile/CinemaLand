@@ -1,10 +1,6 @@
 import { injectSpeedInsights } from "@vercel/speed-insights";
-import HomeLayout from "./components/HomeLayout";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
-import Signin from "./pages/auth/Signin";
-import Signup from "./pages/auth/Signup";
-import Reset from "./pages/auth/Reset";
 import NotFound from "./pages/NotFound";
 import MoviePageLayout from "./components/MoviePageLayout";
 import MoviePopular from "./pages/MoviePopular";
@@ -30,17 +26,8 @@ const queryClient = new QueryClient();
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomeLayout />,
-    children: [
-      { index: true, element: <Home /> },
-      { path: "/login", element: <Signin /> },
-      { path: "/signup", element: <Signup /> },
-      { path: "/reset-password", element: <Reset /> },
-    ],
+    element : <Home/>
   },
-  {
-    element: <ProtectedRoute />,
-    children: [
       {
         path: "/movie",
         element: <MoviePageLayout />,
@@ -55,29 +42,33 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: "/movie/:category/:categoryId",
-        element: <MovieCategory />,
-      },
-      {
-        path: "/movie/:movieId",
-        element: <MovieDetails />,
+        element: <ProtectedRoute />,
         children: [
           {
-            index: true,
-            element: <MovieDetailsReviews />,
+            path: "/movie/:category/:categoryId",
+            element: <MovieCategory />,
           },
           {
-            path: "/movie/:movieId/recommendations",
-            element: <MovieDetailsRecommendations />,
+            path: "/movie/:movieId",
+            element: <MovieDetails />,
+            children: [
+              {
+                index: true,
+                element: <MovieDetailsReviews />,
+              },
+              {
+                path: "/movie/:movieId/recommendations",
+                element: <MovieDetailsRecommendations />,
+              },
+              {
+                path: "/movie/:movieId/credits",
+                element: <MovieDetailsCredits />,
+              }, // Catch-all for nested routes
+            ],
           },
-          {
-            path: "/movie/:movieId/credits",
-            element: <MovieDetailsCredits />,
-          }, // Catch-all for nested routes
         ],
       },
-    ],
-  },
+  
   { path: "*", element: <NotFound /> },
 ]);
 

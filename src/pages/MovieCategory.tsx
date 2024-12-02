@@ -90,7 +90,7 @@ useEffect(() => {
           </div>
         </aside>
 
-        <main className="flex flex-row flex-wrap gap-10 min-w-[500px]  p-10 pb-[40px]  rounded-lg justify-center items-center bg-[#000000] ">
+        <main className="flex flex-row flex-wrap gap-10 min-w-full   p-10 pb-[40px]  rounded-lg justify-center items-center bg-[#000000] ">
           {isLoading && <Skeleton />}
           {isError && <ApiError error={error.message} />}
 

@@ -4,7 +4,10 @@ import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import {
   SignedIn,
+  SignedOut,
+  SignInButton,
   UserButton,
+  useUser,
 } from "@clerk/clerk-react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -19,11 +22,24 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useEffect } from "react";
+import { toast } from "sonner";
 
 
 
 
 const MovieNavigation = () => {
+  const { user } = useUser();
+
+  useEffect(() => {
+    if(user){
+      toast.success(`Welcome to Cinema Base ${user.fullName}`);
+    }else{
+      toast.warning(`Please sign in to access the Movie details page`);
+    }
+  }, [user]);
+
+
   return (
     <>
       <motion.nav
@@ -33,7 +49,7 @@ const MovieNavigation = () => {
         transition={{ duration: 0.5 }}>
         {/* Home */}
         <Tippy content="Go to Home" placement="right">
-          <Link to="/">
+          <Link to="/movie">
             <div className=" gap-5 items-center justify-start text-lg flex pt-4 pl-4 hover:scale-110">
               <img src={Logo} alt="Cinema Base" className="h-10 w-10" />
             </div>
@@ -142,15 +158,16 @@ const MovieNavigation = () => {
           </Tippy>
         </header>
 
-       
-            <Tippy content="Profile Menu" placement="right">
-              <footer className="flex items-center justify-center absolute bottom-10 cursor-pointer  hover:scale-110 w-full">
-               <SignedIn >
-            <UserButton />
-          </SignedIn>
-              </footer>
-            </Tippy>
-          
+        <Tippy content={user ? `Hello, ${user.fullName}` : "Sign In"} placement="right">
+          <footer className="flex items-center justify-center absolute bottom-10 cursor-pointer  hover:scale-110 w-full">
+            <SignedOut>
+              <SignInButton mode="modal" />
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+          </footer>
+        </Tippy>
       </motion.nav>
     </>
   );

@@ -30,7 +30,6 @@ import { toast } from "sonner";
 import { useLayoutEffect } from "react";
 import Meta from "@/components/Meta";
 
-
 const MovieDetails = () => {
   const { movieId } = useParams();
   const navigate = useNavigate();
@@ -60,6 +59,11 @@ const MovieDetails = () => {
   useLayoutEffect(() => {
     toast.success(`Movie details for ${data?.title} loaded successfully!`);
   }, [data]);
+
+
+  
+
+
 
   const videoUrls: string[] = videoData?.results
     .sort((a: any, b: any) => {

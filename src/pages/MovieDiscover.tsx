@@ -9,9 +9,11 @@ import { toast } from "sonner";
 import Pagination from "@/components/Pagination";
 import { motion } from "framer-motion";
 import Meta from "@/components/Meta";
+import { useUser } from "@clerk/clerk-react";
+
 
 const MovieDiscover = () => {
-  
+  const { user } = useUser();
   const [period, setPeriod] = useState<"week" | "day">("day");
   const [pageNumber, setPageNumber] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(9);
@@ -34,23 +36,12 @@ const MovieDiscover = () => {
     }
   }, [data]);
   
-  useEffect(() => {
-    if (isLoading) {
-      toast.info("Loading data...");
-    }
-  }, [isLoading]);
 
   useEffect(() => {
     if (isError) {
       toast.error(`Error loading data:  ${error.message}`);
     }
   }, [isError, error]);
-
-  useEffect(() => {
-    toast.success(
-      "Welcome to the Trending Movies Page on TMDB. These trends are based on this day or week."
-    );
-  }, []);
 
    useEffect(() => {
      if (data) {
@@ -71,14 +62,16 @@ const MovieDiscover = () => {
    }, [isError, error]);
 
    useEffect(() => {
-     toast.success(
-       "Welcome to the Trending Movies Page on TMDB. These trends are based on this day or week."
-     );
-   }, []);
-
-   useEffect(() => {
      toast.success(`Filtered according to trending movies this: ${period.toLocaleUpperCase()}.`);
    }, [period]);
+
+    useEffect(() => {
+      if (user) {
+        toast.success(`Welcome to Cinema Base ${user.fullName}`);
+      } else {
+        toast.warning(`Please sign in to access the Movie details page`);
+      }
+    }, [user]);
 
 
   return (
@@ -94,10 +87,6 @@ const MovieDiscover = () => {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}>
         <aside className="flex flex-row gap-2 items-center justify-between w-[80%] rounded">
-          <h6 className="text-md font-bold oswald-regular text-[#FACC15] ">
-            Trending Movies Page
-          </h6>
-
           <div className="relative z-20 min-w-[200px] flex items-center justify-between   rounded">
             <button
               className={`px-10 py-2 rounded-md flex items-center justify-center gap-4 ${
@@ -120,9 +109,16 @@ const MovieDiscover = () => {
           </div>
 
           <p className="text-md">
+            {user && user.fullName && (
+              <p className="text-md font-bold oswald-regular inline">
+                Hello,&nbsp;
+                <span className="text-[#FACC15] ">{user.fullName}</span>{" "}
+                &nbsp;on&nbsp;
+              </p>
+            )}
             Trending movies on TMDB this{" "}
             <span className="text-[#FACC15] uppercase font-bold">{period}</span>
-            .
+            .{" "}
           </p>
         </aside>
 
