@@ -1,4 +1,5 @@
 import { injectSpeedInsights } from "@vercel/speed-insights";
+import { inject } from "@vercel/analytics";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
@@ -73,6 +74,7 @@ const router = createBrowserRouter([
 ]);
 
 injectSpeedInsights();
+inject();
 
 export default function App() {
   return (
