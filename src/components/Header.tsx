@@ -1,11 +1,10 @@
 
-import { Button } from "@/components/ui/button"
 import { Link } from "react-router-dom";
 import Logo from "/blob.svg";
+import { Button } from "./ui/button";
 const Header = () => {
   return (
-    <div
-      className="hidden md:flex justify-center pt-4 roboto-condensed-regular">
+    <div className="hidden md:flex justify-center pt-4 roboto-condensed-regular">
       <header className=" min-w-[90vw]  min-h-[50px] flex justify-between items-center px-4 rounded-lg md:fixed md:top-10 ">
         <Link to="/">
           <div className=" gap-5 items-center justify-center text-lg hidden md:flex">
@@ -16,9 +15,6 @@ const Header = () => {
         <nav className="flex gap-20 *:uppercase text-sm">
           <Link to="/login">
             <Button>Sign in</Button>
-          </Link>
-          <Link to="/signup">
-            <Button variant="ghost">Sign up</Button>
           </Link>
         </nav>
       </header>

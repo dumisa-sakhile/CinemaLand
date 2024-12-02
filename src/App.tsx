@@ -24,6 +24,7 @@ import MovieDetailsRecommendations from "./pages/MovieDetailsRecommendations";
 import MovieDetailsCredits from "./pages/MovieDetailsCredits";
 import MovieCategory from "./pages/MovieCategory";
 
+
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([

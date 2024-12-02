@@ -1,8 +1,10 @@
 import { Navigate, Outlet } from "react-router-dom";
-import AuthenticatedStatus  from "./AuthenticatedStatus";
+import { useUser } from "@clerk/clerk-react";
 
 const ProtectedRoute = () => {
-  return <>{AuthenticatedStatus() ? <Outlet /> : <Navigate to="/login" />}</>;
+    const { user } = useUser();
+
+  return user ? <Outlet /> : <Navigate to="/login" />;
 };
 
 export default ProtectedRoute;
