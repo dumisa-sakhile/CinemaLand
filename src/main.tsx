@@ -22,7 +22,6 @@ root.render(
         afterSignOutUrl="/"
         signInFallbackRedirectUrl="/movie"
         signUpFallbackRedirectUrl="/movie"
-        signInForceRedirectUrl="/movie"
         appearance={{
           baseTheme: dark,
         }}>
