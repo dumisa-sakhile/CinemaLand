@@ -19,7 +19,7 @@ const Header = () => {
         <nav className="flex gap-20 *:uppercase text-sm">
           <SignedOut>
             <Button>
-              <SignInButton />
+              <SignInButton mode="modal"/>
             </Button>
           </SignedOut>
         </nav>
