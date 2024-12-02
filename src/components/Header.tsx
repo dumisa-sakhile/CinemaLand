@@ -13,7 +13,7 @@ const Header = () => {
           </div>
         </Link>
         <nav className="flex gap-20 *:uppercase text-sm">
-          <Link to="/login">
+          <Link to="/signup">
             <Button>Sign in</Button>
           </Link>
         </nav>
