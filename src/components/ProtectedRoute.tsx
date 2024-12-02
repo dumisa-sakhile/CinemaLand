@@ -4,7 +4,7 @@ import { useUser } from "@clerk/clerk-react";
 const ProtectedRoute = () => {
     const { user } = useUser();
 
-  return user ? <Outlet /> : <Navigate to="/signup" />;
+  return user ? <Outlet /> : <Navigate to="/" />;
 };
 
 export default ProtectedRoute;

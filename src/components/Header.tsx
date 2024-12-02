@@ -1,6 +1,10 @@
 
 import { Link } from "react-router-dom";
 import Logo from "/blob.svg";
+import {
+  SignedOut,
+  SignInButton,
+} from "@clerk/clerk-react";
 import { Button } from "./ui/button";
 const Header = () => {
   return (
@@ -13,9 +17,11 @@ const Header = () => {
           </div>
         </Link>
         <nav className="flex gap-20 *:uppercase text-sm">
-          <Link to="/signup">
-            <Button>Sign in</Button>
-          </Link>
+          <SignedOut>
+            <Button>
+              <SignInButton />
+            </Button>
+          </SignedOut>
         </nav>
       </header>
     </div>

@@ -20,8 +20,8 @@ root.render(
       <ClerkProvider
         publishableKey={PUBLISHABLE_KEY}
         afterSignOutUrl="/"
-        signInFallbackRedirectUrl="/login" // Update this prop to point to your login page
-        signUpFallbackRedirectUrl="/movie"
+        signInFallbackRedirectUrl="/"
+        signUpFallbackRedirectUrl="/"
         appearance={{ baseTheme: dark }}>
         <App />
       </ClerkProvider>

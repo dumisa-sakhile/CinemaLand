@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useUser } from "@clerk/clerk-react";
 import { Navigate } from "react-router-dom";
 import Meta from "@/components/Meta";
+import { SignedOut, SignInButton } from "@clerk/clerk-react";
 
 export default  function Home() {
   const { user } = useUser();
@@ -40,9 +40,11 @@ export default  function Home() {
                 for you.
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
-                <Link to="/movie">
-                  <Button>Let's Get Started</Button>
-                </Link>
+                  <SignedOut>
+                    <Button>
+                      <SignInButton />
+                    </Button>
+                  </SignedOut>
               </div>
             </div>
           </div>
