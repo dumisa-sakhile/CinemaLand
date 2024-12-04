@@ -17,14 +17,15 @@ const MoviePageLayout = () => {
       initial={{ scale: 2 }}
       animate={{ scale: 1 }}
       transition={{ duration: 0.5 }}>
-      <img
+      {/* <img
         src={backgroundList[Math.floor(Math.random() * backgroundList.length)]}
         alt="backdrop image"
         className="w-full h-screen fixed top-0 left-0 -z-0"
-      />
+      /> */}
+     
       <MovieNavigation />
 
-      <main className="lg:fixed lg:left-0 lg:top-0 w-full h-screen flex flex-col items-start justify-start p-4  pl-[130px] bg-[#1C1917] bg-opacity-85">
+      <main className="lg:fixed lg:left-0 lg:top-0 w-full h-screen flex flex-col items-start justify-start p-4  pl-[130px] bg-[#1C1917] bg-opacity-100">
         <Outlet />
       </main>
     </motion.div>
