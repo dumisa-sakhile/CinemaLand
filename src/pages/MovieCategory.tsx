@@ -67,7 +67,6 @@ useEffect(() => {
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}>
-
         <aside className="absolute top-0 flex flex-row gap-2 items-center justify-center w-full rounded  z-10 py-4">
           <h1 className="text-md font-bold text-[#FACC15] inter-regular pt-4">
             Movie Category filtered by the {searchParams.get("type")} :&nbsp;
@@ -108,7 +107,7 @@ useEffect(() => {
         </main>
         {/* Display popular movies */}
 
-        <div className="relative z-20 w-full flex items-center justify-center  py-20">
+        <div className="relative z-20 w-full flex items-center justify-center bg-[#1C1917] bg-opacity-75 pb-40">
           <MovieFooter />
         </div>
 

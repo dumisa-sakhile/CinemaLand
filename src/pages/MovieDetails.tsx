@@ -31,6 +31,7 @@ import { useLayoutEffect } from "react";
 import Meta from "@/components/Meta";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
+import MovieFooter from "@/components/MovieFooter";
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -333,6 +334,10 @@ const MovieDetails = () => {
             {/* Header */}
 
             <Outlet />
+
+            <div className="relative z-20 w-full flex items-center justify-center pb-10">
+              <MovieFooter/>
+            </div>
           </motion.aside>
         </main>
       </motion.div>

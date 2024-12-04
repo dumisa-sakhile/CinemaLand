@@ -7,7 +7,7 @@ const MovieFooter = () => {
         <span className="text-sm sm:text-center text-white">
           © {new Date().getFullYear()}{" "}
           <span className="hover:underline text-[#FACC15]">
-            <Link to="/">Cinema Land</Link>
+            <Link to="/movie">Cinema Land</Link>
           </span>
           . All Rights Reserved.{" "}
         </span>

@@ -130,7 +130,8 @@ const MovieSearch = () => {
             </div>
           </section>
 
-          <p className="text-sm inter-regular overflow-hidden whitespace-nowrap text-ellipsis w-[150px]">Search :&nbsp;
+          <p className="text-sm inter-regular overflow-hidden whitespace-nowrap text-ellipsis w-[150px]">
+            Search :&nbsp;
             <span className="text-[#FACC15] uppercase">{search}</span>
           </p>
         </aside>
@@ -155,7 +156,7 @@ const MovieSearch = () => {
           ))}
         </main>
 
-        <div className="relative z-20 w-full flex items-center justify-center bg-[#1C1917]  bg-opacity-0 pb-40">
+        <div className="relative z-20 w-full flex items-center justify-center bg-[#1C1917] bg-opacity-75 pb-40">
           <MovieFooter />
         </div>
 

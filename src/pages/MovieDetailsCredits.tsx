@@ -32,7 +32,6 @@ const MovieDetailsCredits = () => {
       {isError && <ApiError error={error} />}
 
       {data?.cast.map((credits: any) => (
-    
         <CastCard
           key={credits.cast_id}
           name={credits?.name}
@@ -40,6 +39,8 @@ const MovieDetailsCredits = () => {
           img={credits?.profile_path}
         />
       ))}
+
+      
     </motion.section>
   );
 };

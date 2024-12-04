@@ -141,7 +141,7 @@ const MovieDiscover = () => {
         </main>
         {/* Display popular movies */}
 
-        <div className="relative z-20 w-full flex items-center justify-center bg-[#1C1917] bg-opacity-0 pb-40">
+        <div className="relative z-20 w-full flex items-center justify-center bg-[#1C1917] bg-opacity-75 pb-40">
           <MovieFooter />
         </div>
 

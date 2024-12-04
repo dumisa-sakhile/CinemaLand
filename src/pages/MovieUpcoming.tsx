@@ -59,8 +59,7 @@ const MovieUpcoming = () => {
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}>
-        
-<MovieHeaderComponent title="Upcoming Movies" />
+        <MovieHeaderComponent title="Upcoming Movies" />
         <main className="flex flex-row flex-wrap gap-10 min-w-[500px] pt-24 pb-[40px]  rounded-lg justify-center items-center">
           {isLoading && <Skeleton />}
           {isError && <ApiError error={error.message} />}
@@ -79,7 +78,7 @@ const MovieUpcoming = () => {
         </main>
         {/* Display popular movies */}
 
-        <div className="relative z-20 w-full flex items-center justify-center bg-[#1C1917] bg-opacity-0 pb-40">
+        <div className="relative z-20 w-full flex items-center justify-center bg-[#1C1917] bg-opacity-75 pb-40">
           <MovieFooter />
         </div>
 
