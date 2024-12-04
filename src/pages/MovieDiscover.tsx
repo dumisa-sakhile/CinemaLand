@@ -89,7 +89,7 @@ const MovieDiscover = () => {
         <aside className="flex-nowrap absolute top-4 rounded-md left-[6%] flex flex-col md:flex-row gap-10 items-center justify-start px-4 h-[50px] w-[80%] bg-inherit">
           <div
             className=" z-20 min-w-[200px] flex items-center justify-between   text-sm bg-[#1c1917] border
-          border-[#27272a] bg-opacity-70 rounded-md">
+          border-[#27272a] bg-opacity-70 rounded-md oswald-regular">
             <button
               className={`px-10 py-2 rounded-md flex items-center justify-center gap-4 ${
                 period === "day"
@@ -109,7 +109,7 @@ const MovieDiscover = () => {
               Week
             </button>
           </div>
-          <p className="text-sm inter-light hidden md:block">
+          <p className="text-md oswald-light hidden md:block">
             {user && user.fullName && (
               <p className="text-md inline">
                 Hello,&nbsp;

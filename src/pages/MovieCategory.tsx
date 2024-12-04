@@ -68,7 +68,7 @@ useEffect(() => {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}>
         <aside className="absolute top-0 flex flex-row gap-2 items-center justify-center w-full rounded  z-10 py-4">
-          <h1 className="text-md font-bold text-[#FACC15] inter-regular pt-4">
+          <h1 className="text-md font-bold text-[#FACC15] oswald-regular pt-4">
             Movie Category filtered by the {searchParams.get("type")} :&nbsp;
             {searchParams.get("name")}
           </h1>

@@ -21,11 +21,12 @@ const MovieCard = ({
   return (
     <Link to={`/movie/${id}`}>
       <motion.article
-        className="relative w-[198px] min-h-[420px] text-center  rounded-sm  inter-regular hover:animate-pulse "
+        className="relative w-[198px] min-h-[420px] text-center  rounded-sm  roboto-condensed-regular hover:animate-pulse "
         whileHover={{ scale: 0.9 }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}>
+        transition={{ duration: 0.5 }}
+        >
         <img
           loading="lazy"
           className="w-[198px] h-[319px] rounded-lg"

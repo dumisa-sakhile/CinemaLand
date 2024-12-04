@@ -8,6 +8,18 @@ import {
   useUser,
   useClerk
 } from "@clerk/clerk-react";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+
 
 
 import { Link } from "react-router-dom";
@@ -161,7 +173,7 @@ const MovieNavigation = () => {
             </Tippy>
 
             <footer
-              className=" fixed top-5 right-10 hidden md:flex items-center gap-2 justify-center cursor-pointer  hover:bg-opacity-100 w-[100px] h-[50px] text-sm inter-regular  rounded-md"
+              className=" fixed top-5 right-10 hidden md:flex items-center gap-2 justify-center cursor-pointer  hover:bg-opacity-100 w-[100px] h-[50px] text-sm oswald-regular  rounded-md"
               onClick={() => openSignIn()}>
               <Button>Sign In</Button>
             </footer>
@@ -180,11 +192,30 @@ const MovieNavigation = () => {
               </footer>
             </Tippy>
 
-            <footer
-              className=" fixed top-5 right-10 hidden md:flex items-center gap-2 justify-center cursor-pointer  hover:bg-opacity-100 w-[100px] h-[50px] text-sm inter-regular"
-              onClick={() => signOut()}>
-              <Button>Sign out</Button>
-            </footer>
+            <AlertDialog>
+              <AlertDialogTrigger>
+                <footer className=" fixed top-5 right-10 hidden md:flex items-center gap-2 justify-center cursor-pointer  hover:bg-opacity-100 w-[100px] h-[50px] text-sm oswald-regular">
+                  <Button>Sign out</Button>
+                </footer>
+              </AlertDialogTrigger>
+              <AlertDialogContent className="dark-mode">
+                <AlertDialogHeader>
+                  <AlertDialogTitle>
+                    Are you sure you want to sign out?
+                  </AlertDialogTitle>
+                  <AlertDialogDescription>
+                    You will be signed out of your account and will have to log
+                    in again to access all pages.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel className="text-black">Cancel</AlertDialogCancel>
+                  <AlertDialogAction onClick={() => signOut()}>
+                    Continue
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
           </>
         )}
       </motion.nav>

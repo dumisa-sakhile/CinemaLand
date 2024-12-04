@@ -77,7 +77,7 @@ const MovieDiscover = () => {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}>
         <aside className="flex-nowrap absolute top-2 rounded-md left-[6%] flex flex-row gap-2 items-start justify-start h-[50px] w-[80%] bg-[#1C1917] bg-opacity-50 border border-[#27272a]">
-          <ul className="hide-scrollbar overflow-auto h-full w-full  flex flex-row gap-1 items-start justify-start inter-medium  rounded py-2 px-2 text-sm">
+          <ul className="hide-scrollbar overflow-auto h-full w-full  flex flex-row gap-1 items-start justify-start roboto-condensed-medium  rounded py-2 px-2 text-sm">
             {Array.from(GenreData()).map(
               (genre: { id: number; name: string }) => (
                 <Button
@@ -86,7 +86,7 @@ const MovieDiscover = () => {
                   className={
                     genre.id === genreId
                       ? "bg-[#FACC15] border border-yellow-900 text-yellow-950 rounded-lg inline-block"
-                      : "inter-regular bg-transparent text-white"
+                      : "roboto-condensed-medium bg-transparent text-white"
                   }
                   onClick={() => handleGenreChange(genre.id, genre.name)}>
                   {genre.name}

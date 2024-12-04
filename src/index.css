@@ -72,7 +72,6 @@
   }
 }
 
-
 @layer base {
   * {
     @apply border-border;
@@ -85,7 +84,7 @@
 @layer utilities {
 
   /* Light Weights */
-.inter-light {
+.inter-thin {
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
   font-weight: 100;
@@ -308,3 +307,11 @@ body{
 .tippy-content {
   @apply roboto-condensed-light
 }
+
+
+.dark-mode {
+  @apply bg-[#1C1917] roboto-condensed-regular text-white border border-[#27272a]
+}
+
+
+
