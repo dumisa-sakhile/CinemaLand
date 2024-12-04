@@ -3,14 +3,14 @@ import MovieNavigation from "./MovieNavigation";
 import { motion } from "framer-motion"
 
 const MoviePageLayout = () => {
-  const backgroundList: string[] = [
-    "https://image.tmdb.org/t/p/original//dvBCdCohwWbsP5qAaglOXagDMtk.jpg",
-    "https://image.tmdb.org/t/p/original//9SSEUrSqhljBMzRe4aBTh17rUaC.jpg",
-    "https://image.tmdb.org/t/p/original//euYIwmwkmz95mnXvufEmbL6ovhZ.jpg",
-    "https://image.tmdb.org/t/p/original//c6nouvFYnmNO50WQDLcKMI3p0jA.jpg",
-    "https://image.tmdb.org/t/p/original//iYLKMV7PIBtFmtygRrhSiyzcVsF.jpg",
-    "https://image.tmdb.org/t/p/original//nazLAYvFewST34QMueOq4MlYKoc.jpg",
-  ];
+  // const backgroundList: string[] = [
+  //   "https://image.tmdb.org/t/p/original//dvBCdCohwWbsP5qAaglOXagDMtk.jpg",
+  //   "https://image.tmdb.org/t/p/original//9SSEUrSqhljBMzRe4aBTh17rUaC.jpg",
+  //   "https://image.tmdb.org/t/p/original//euYIwmwkmz95mnXvufEmbL6ovhZ.jpg",
+  //   "https://image.tmdb.org/t/p/original//c6nouvFYnmNO50WQDLcKMI3p0jA.jpg",
+  //   "https://image.tmdb.org/t/p/original//iYLKMV7PIBtFmtygRrhSiyzcVsF.jpg",
+  //   "https://image.tmdb.org/t/p/original//nazLAYvFewST34QMueOq4MlYKoc.jpg",
+  // ];
   return (
     <motion.div
       className="min-w-full min-h-screen text-[#F2F2F2] roboto-condensed-regular flex  items-center justify-center rounded-lg gap-6 "
