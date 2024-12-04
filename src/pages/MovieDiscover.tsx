@@ -67,7 +67,7 @@ const MovieDiscover = () => {
 
     useEffect(() => {
       if (user) {
-        toast.success(`Welcome to Cinema Base ${user.fullName}`);
+        toast.success(`Welcome to Cinema Land ${user.fullName}`);
       } else {
         toast.warning(`Please sign in to access the Movie details page`);
       }
