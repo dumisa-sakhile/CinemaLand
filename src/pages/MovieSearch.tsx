@@ -81,7 +81,7 @@ const MovieSearch = () => {
         transition={{ duration: 0.5 }}>
         {/* search */}
         <aside className="flex absolute -top-2 flex-row gap-2 items-center justify-center  py-4 w-[60%] rounded">
-          <h6 className="text-sm font-bold inter-regular text-[#FACC15] ">
+          <h6 className="text-sm font-bold inter-regular text-[#FACC15] hidden md:block">
             Movies Search Page
           </h6>
 
@@ -130,14 +130,14 @@ const MovieSearch = () => {
             </div>
           </section>
 
-          <p className="text-sm inter-regular overflow-hidden whitespace-nowrap text-ellipsis w-[150px]">
+          <p className="hidden md:block text-sm inter-regular overflow-hidden whitespace-nowrap text-ellipsis w-[150px]">
             Search :&nbsp;
             <span className="text-[#FACC15] uppercase">{search}</span>
           </p>
         </aside>
         {/* search */}
 
-        <main className="flex flex-row flex-wrap gap-10 min-w-[500px] pt-24 pb-[40px]  rounded-lg justify-center items-center">
+        <main className="flex flex-row flex-wrap gap-10 w-full pt-24 pb-[40px]  rounded-lg justify-center items-center">
           {isLoading && <Skeleton />}
           {isError && <ApiError error={error.message} />}
 

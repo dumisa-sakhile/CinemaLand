@@ -55,13 +55,13 @@ useEffect(() => {
         canonicalUrl={`https://cinema-land.vercel.app/movie/popular`}
       />
       <motion.div
-        className="relative flex flex-col gap-4 w-full h-screen overflow-auto"
+        className="relative flex flex-col gap-4 w-full h-scree overflow-auto"
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}>
         <MovieHeaderComponent title="Popular Movies" />
 
-        <main className="flex flex-row flex-wrap gap-10 min-w-[500px] pt-24 pb-[40px]  rounded-lg justify-center items-center">
+        <main className="flex flex-row flex-wrap gap-10 w-full pt-24 pb-[40px]  rounded-lg justify-center items-center">
           {isLoading && <Skeleton />}
           {isError && <ApiError error={error.message} />}
 

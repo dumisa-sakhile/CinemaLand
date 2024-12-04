@@ -35,7 +35,7 @@ const MovieNavigation = () => {
   return (
     <>
       <motion.nav
-        className="fixed left-4  w-[70px] h-[90%] z-40 flex flex-col items-center justify-center bg-[#1C1917] bg-opacity-50 border border-[#27272a]"
+        className="fixed left-0 md:left-4 top-0  md:top-auto w-[70px] h-screen md:h-[90%] z-40 flex flex-col items-center justify-center bg-[#1C1917] bg-opacity-50 border border-[#27272a]"
         initial={{ scale: 2 }}
         animate={{ scale: 1 }}
         transition={{ duration: 0.5 }}>
@@ -161,7 +161,7 @@ const MovieNavigation = () => {
             </Tippy>
 
             <footer
-              className=" fixed top-5 right-10 flex items-center gap-2 justify-center cursor-pointer  hover:bg-opacity-100 w-[100px] h-[50px] text-sm inter-regular  rounded-md"
+              className=" fixed top-5 right-10 hidden md:flex items-center gap-2 justify-center cursor-pointer  hover:bg-opacity-100 w-[100px] h-[50px] text-sm inter-regular  rounded-md"
               onClick={() => openSignIn()}>
               <Button>Sign In</Button>
             </footer>
@@ -181,7 +181,7 @@ const MovieNavigation = () => {
             </Tippy>
 
             <footer
-              className=" fixed top-5 right-10 flex items-center gap-2 justify-center cursor-pointer  hover:bg-opacity-100 w-[100px] h-[50px] text-sm inter-regular"
+              className=" fixed top-5 right-10 hidden md:flex items-center gap-2 justify-center cursor-pointer  hover:bg-opacity-100 w-[100px] h-[50px] text-sm inter-regular"
               onClick={() => signOut()}>
               <Button>Sign out</Button>
             </footer>

@@ -82,11 +82,11 @@ const MovieDiscover = () => {
         canonicalUrl={`https://cinema-land.vercel.app/movie/`}
       />
       <motion.div
-        className="relative flex flex-col gap-4 w-full h-scree items-center overflow-auto py-4"
+        className="relative flex flex-col gap-4 w-full items-center overflow-auto py-4"
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}>
-        <aside className="flex-nowrap absolute top-4 rounded-md left-[6%] flex flex-row gap-10 items-center justify-start px-4 h-[50px] w-[80%] bg-inherit">
+        <aside className="flex-nowrap absolute top-4 rounded-md left-[6%] flex flex-col md:flex-row gap-10 items-center justify-start px-4 h-[50px] w-[80%] bg-inherit">
           <div
             className=" z-20 min-w-[200px] flex items-center justify-between   text-sm bg-[#1c1917] border
           border-[#27272a] bg-opacity-70 rounded-md">
@@ -109,7 +109,7 @@ const MovieDiscover = () => {
               Week
             </button>
           </div>
-          <p className="text-sm inter-light">
+          <p className="text-sm inter-light hidden md:block">
             {user && user.fullName && (
               <p className="text-md inline">
                 Hello,&nbsp;
@@ -123,7 +123,7 @@ const MovieDiscover = () => {
           </p>
         </aside>
 
-        <main className="flex flex-row flex-wrap gap-10 min-w-[500px] pt-24 pb-[40px]  rounded-lg justify-center items-center">
+        <main className="flex flex-row flex-wrap gap-10 w-full pt-24 pb-[40px]  rounded-lg justify-center items-center">
           {isLoading && <Skeleton />}
           {isError && <ApiError error={error.message} />}
 

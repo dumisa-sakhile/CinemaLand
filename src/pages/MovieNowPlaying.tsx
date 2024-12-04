@@ -61,7 +61,7 @@ const MovieNowPlaying = () => {
         transition={{ duration: 0.5 }}>
         <MovieHeaderComponent title="Now Playing Movies" />
 
-        <main className="flex flex-row flex-wrap gap-10 min-w-[500px] pt-24 pb-[40px]  rounded-lg justify-center items-center">
+        <main className="flex flex-row flex-wrap gap-10 w-full pt-24 pb-[40px]  rounded-lg justify-center items-center">
           {isLoading && <Skeleton />}
 
           {isError && <ApiError error={error.message} />}

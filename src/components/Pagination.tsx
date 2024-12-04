@@ -7,8 +7,8 @@ interface PaginationType{
 }
 const Pagination = ({pageNumber, totalPages, setPageNumber} : PaginationType) => {
   return (
-    <footer className="fixed bottom-2 w-full mx-auto max-w-screen-xl flex items-center justify-center  py-4    roboto-condensed-regular  bg-inherit shadow-lg ">
-      <div className="flex flex-row gap-6 items-center justify-center bg-[#1C1917] border border-[#27272a] px-4 py-2 rounded">
+    <footer className="fixed bottom-2 w-full flex items-center justify-center  py-4    roboto-condensed-regular  bg-inherit shadow-lg ">
+      <div className="flex flex-col md:flex-row gap-6 items-center justify-center bg-[#1C1917] border border-[#27272a] px-4 py-2 rounded">
         {/* Help text */}
         <span className="text-md text-white ">
           Showing{" "}
