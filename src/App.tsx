@@ -76,11 +76,13 @@ const router = createBrowserRouter([
 injectSpeedInsights();
 inject();
 
+
 export default function App() {
   return (
     <div className="min-w-full min-h-screen text-[#F2F2F2] roboto-condensed-regular scrollbar-hide flex flex-col items-center justify-center rounded-lg gap-6 ">
       <QueryClientProvider client={queryClient}>
-        <Toaster richColors /> {/* Add the Toaster component here */}
+        <Toaster richColors theme="dark"/>{" "}
+        {/* Add the Toaster component here */}
         <RouterProvider router={router} />
         <ReactQueryDevtools />
       </QueryClientProvider>

@@ -4,32 +4,24 @@ import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import {
   SignedIn,
-  SignedOut,
-  SignInButton,
   UserButton,
   useUser,
+  useClerk
 } from "@clerk/clerk-react";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import {
-  faStar,
-  faFire,
-  faBomb,
-  faPlay,
-  faCalendarCheck,
-  faFilter
-} from "@fortawesome/free-solid-svg-icons";
+
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { toast } from "sonner";
+import { Button } from "./ui/button";
 
 
 
 
 const MovieNavigation = () => {
   const { user } = useUser();
+  const { signOut, openSignIn, openUserProfile } = useClerk();
 
   useEffect(() => {
     if(user){
@@ -43,20 +35,20 @@ const MovieNavigation = () => {
   return (
     <>
       <motion.nav
-        className="bg-[#1C1917] border border-[#27272a] fixed left-10 bottom-4  w-[60px] h-[90%] z-40  rounded-md"
+        className="fixed left-4  w-[70px] h-[90%] z-40 flex flex-col items-center justify-center bg-[#1C1917] bg-opacity-50 border border-[#27272a]"
         initial={{ scale: 2 }}
         animate={{ scale: 1 }}
         transition={{ duration: 0.5 }}>
         {/* Home */}
         <Tippy content="Go to Home" placement="right">
           <Link to="/movie">
-            <div className=" gap-5 items-center justify-start text-lg flex pt-4 pl-4 hover:scale-110">
+            <div className="w-full -ml-4 absolute top-10  items-center justify-start text-lg flex  hover:scale-110">
               <img src={Logo} alt="Cinema Base" className="h-10 w-10" />
             </div>
           </Link>
         </Tippy>
 
-        <header className="flex flex-col gap-8 p-4 roboto-condensed-regular capitalize pt-10 text-[.9rem]">
+        <header className="flex flex-col gap-8 p-4 roboto-condensed-regular capitalize text-[.9rem]  rounded-md">
           <Tippy content="Discover Movies" placement="right">
             <nav className="flex items-center justify-start gap-4 hover:scale-110">
               <NavLink
@@ -67,7 +59,7 @@ const MovieNavigation = () => {
                   }`
                 }
                 end>
-                <FontAwesomeIcon icon={faBomb} size="lg" />
+                <i className="fi fi-rr-bomb text-lg"></i>
               </NavLink>
             </nav>
           </Tippy>
@@ -81,7 +73,7 @@ const MovieNavigation = () => {
                     isActive ? "bg-[#FACC15] text-black" : "text-gray-300" // Changed to pink
                   }`
                 }>
-                <FontAwesomeIcon icon={faFire} size="lg" />
+                <i className="fi fi-rr-fire-flame-curved text-lg"></i>
               </NavLink>
             </nav>
           </Tippy>
@@ -95,7 +87,7 @@ const MovieNavigation = () => {
                     isActive ? "bg-[#FACC15] text-black" : "text-gray-300" // Changed to pink
                   }`
                 }>
-                <FontAwesomeIcon icon={faStar} size="lg" />
+                <i className="fi fi-rs-medal text-lg"></i>
               </NavLink>
             </nav>
           </Tippy>
@@ -109,7 +101,7 @@ const MovieNavigation = () => {
                     isActive ? "bg-[#FACC15] text-black" : "text-gray-300" // Changed to pink
                   }`
                 }>
-                <FontAwesomeIcon icon={faCalendarCheck} size="lg" />
+                <i className="fi fi-rr-calendar text-lg"></i>
               </NavLink>
             </nav>
           </Tippy>
@@ -123,7 +115,7 @@ const MovieNavigation = () => {
                     isActive ? "bg-[#FACC15] text-black" : "text-gray-300" // Changed to pink
                   }`
                 }>
-                <FontAwesomeIcon icon={faPlay} size="lg" />
+                <i className="fi fi-ts-play-circle text-lg"></i>
               </NavLink>
             </nav>
           </Tippy>
@@ -137,7 +129,7 @@ const MovieNavigation = () => {
                     isActive ? "bg-[#FACC15] text-black" : "text-gray-300" // Changed to pink
                   }`
                 }>
-                <FontAwesomeIcon icon={faMagnifyingGlass} size="lg" />
+                <i className="fi fi-ts-url text-lg"></i>
                 {/* <span>search</span> */}
               </NavLink>
             </nav>
@@ -152,22 +144,49 @@ const MovieNavigation = () => {
                     isActive ? "bg-[#FACC15] text-black" : "text-gray-300" // Changed to pink
                   }`
                 }>
-                <FontAwesomeIcon icon={faFilter} size="lg" />
+                <i className="fi fi-bs-filter-list text-lg"></i>
               </NavLink>
             </nav>
           </Tippy>
         </header>
 
-        <Tippy content={user ? `Hello, ${user.fullName}` : "Sign In"} placement="right">
-          <footer className="flex items-center justify-center absolute bottom-10 cursor-pointer  hover:scale-110 w-full">
-            <SignedOut>
-              <SignInButton mode="modal" />
-            </SignedOut>
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
-          </footer>
-        </Tippy>
+        {!user && (
+          <>
+            <Tippy content="Sign In" placement="right">
+              <footer
+                className=" absolute bottom-10 flex items-center gap-2 justify-center cursor-pointer  hover:bg-opacity-100 w-[100px] h-[50px] text-lg inter-regular"
+                onClick={() => openSignIn()}>
+                <i className="fi fi-rs-sign-in-alt"></i>
+              </footer>
+            </Tippy>
+
+            <footer
+              className=" fixed top-5 right-10 flex items-center gap-2 justify-center cursor-pointer  hover:bg-opacity-100 w-[100px] h-[50px] text-sm inter-regular  rounded-md"
+              onClick={() => openSignIn()}>
+              <Button>Sign In</Button>
+            </footer>
+          </>
+        )}
+
+        {user && (
+          <>
+            <Tippy content="Profile Menu" placement="right">
+              <footer
+                className=" absolute bottom-10 flex items-center flex-col gap-2 justify-center cursor-pointer  hover:bg-opacity-100 w-[100px] h-[90px] text-sm inter-regular  rounded-md"
+                onClick={() => openUserProfile()}>
+                <SignedIn>
+                  <UserButton />
+                </SignedIn>
+              </footer>
+            </Tippy>
+
+            <footer
+              className=" fixed top-5 right-10 flex items-center gap-2 justify-center cursor-pointer  hover:bg-opacity-100 w-[100px] h-[50px] text-sm inter-regular"
+              onClick={() => signOut()}>
+              <Button>Sign out</Button>
+            </footer>
+          </>
+        )}
       </motion.nav>
     </>
   );

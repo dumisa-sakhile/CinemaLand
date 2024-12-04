@@ -9,6 +9,7 @@ import { toast } from "sonner";
 import Pagination from "@/components/Pagination";
 import { motion } from "framer-motion";
 import Meta from "@/components/Meta";
+import MovieHeaderComponent from "@/components/MovieHeaderComponent";
 
 
 const MoviePopular = () => {
@@ -54,17 +55,14 @@ useEffect(() => {
         canonicalUrl={`https://cinema-land.vercel.app/movie/popular`}
       />
       <motion.div
-        className="flex flex-col gap-4 w-full h-screen overflow-auto"
+        className="relative flex flex-col gap-4 w-full h-screen overflow-auto"
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}>
-        <header className="flex flex-col gap-2 items-center justify-center text-center">
-          <h6 className="text-md font-bold oswald-regular text-[#FACC15] ">
-            Popular Movies Page
-          </h6>
-        </header>
+       
+       <MovieHeaderComponent title="Popular Movies"/>
 
-        <main className="flex flex-row flex-wrap gap-10 min-w-[500px] p-10 pb-[40px]  rounded-lg justify-center items-center bg-[#000000]">
+        <main className="flex flex-row flex-wrap gap-10 min-w-[500px] pt-24 pb-[40px]  rounded-lg justify-center items-center">
           {isLoading && <Skeleton />}
           {isError && <ApiError error={error.message} />}
 
@@ -81,11 +79,9 @@ useEffect(() => {
           ))}
         </main>
 
-        <div className="relative z-20 w-full flex items-center justify-center bg-black py-20">
+        <div className="relative z-10 w-full flex items-center justify-center bg-[#1C1917] bg-opacity-0 pb-40 touch-none">
           <MovieFooter />
         </div>
-
-  
 
         {/* Display popular movies */}
         {/* Pagination */}

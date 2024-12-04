@@ -1,4 +1,15 @@
-@import 'https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Oswald:wght@200..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap';
+@import 'https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css';
+@import 'https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-straight/css/uicons-regular-straight.css';
+@import 'https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css';
+@import 'https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-straight/css/uicons-regular-straight.css';
+@import 'https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css';
+@import 'https://cdn-uicons.flaticon.com/2.6.0/uicons-thin-straight/css/uicons-thin-straight.css';
+@import 'https://cdn-uicons.flaticon.com/2.6.0/uicons-thin-straight/css/uicons-thin-straight.css';
+@import 'https://cdn-uicons.flaticon.com/2.6.0/uicons-bold-straight/css/uicons-bold-straight.css';
+@import 'https://cdn-uicons.flaticon.com/2.6.0/uicons-thin-rounded/css/uicons-thin-rounded.css';
+@import 'https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-straight/css/uicons-regular-straight.css';
+
 
 @tailwind base;
 @tailwind components;
@@ -73,162 +84,73 @@
 
 @layer utilities {
 
-  .source-sans-3-light {
-  font-family: "Source Sans 3", sans-serif;
+  /* Light Weights */
+.inter-light {
+  font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 200; /* Light */
-  font-style: normal;
-}
-
-.source-sans-3-regular {
-  font-family: "Source Sans 3", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400; /* Regular */
-  font-style: normal;
-}
-
-.source-sans-3-medium {
-  font-family: "Source Sans 3", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 500; /* Medium */
-  font-style: normal;
-}
-
-.source-sans-3-semibold {
-  font-family: "Source Sans 3", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 600; /* Semi-bold */
-  font-style: normal;
-}
-
-.source-sans-3-bold {
-  font-family: "Source Sans 3", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 700; /* Bold */
-  font-style: normal;
-}
-
-.source-sans-3-extrabold {
-  font-family: "Source Sans 3", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 800; /* Extra-bold */
-  font-style: normal;
-}
-
-.source-sans-3-black {
-  font-family: "Source Sans 3", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 900; /* Black */
-  font-style: normal;
-}
-.poppins-thin {
-  font-family: "Poppins", sans-serif;
   font-weight: 100;
   font-style: normal;
 }
 
-.poppins-extralight {
-  font-family: "Poppins", sans-serif;
+.inter-extra-light {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
   font-weight: 200;
   font-style: normal;
 }
 
-.poppins-light {
-  font-family: "Poppins", sans-serif;
+.inter-light {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
 }
 
-.poppins-regular {
-  font-family: "Poppins", sans-serif;
+/* Regular Weights */
+.inter-regular {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
 }
 
-.poppins-medium {
-  font-family: "Poppins", sans-serif;
+/* Medium Weights */
+.inter-medium {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
 }
 
-.poppins-semibold {
-  font-family: "Poppins", sans-serif;
+/* Semi-Bold Weights */
+.inter-semi-bold {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
 }
 
-.poppins-bold {
-  font-family: "Poppins", sans-serif;
+/* Bold Weights */
+.inter-bold {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
   font-weight: 700;
   font-style: normal;
 }
 
-.poppins-extrabold {
-  font-family: "Poppins", sans-serif;
+.inter-extra-bold {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
   font-weight: 800;
   font-style: normal;
 }
 
-.poppins-black {
-  font-family: "Poppins", sans-serif;
+.inter-black {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
   font-weight: 900;
   font-style: normal;
 }
-
-.poppins-thin-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 100;
-  font-style: italic;
-}
-
-.poppins-extralight-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 200;
-  font-style: italic;
-}
-
-.poppins-light-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-style: italic;
-}
-
-.poppins-regular-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-style: italic;
-}
-
-.poppins-medium-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-style: italic;
-}
-
-.poppins-semibold-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-style: italic;
-}
-
-.poppins-bold-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 700;
-  font-style: italic;
-}
-
-.poppins-extrabold-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 800;
-  font-style: italic;
-}
-
-.poppins-black-italic {
-  font-family: "Poppins", sans-serif;
-  font-weight: 900;
-  font-style: italic;
-}
-
 .roboto-condensed-light {
   font-family: "Roboto Condensed", sans-serif;
   font-optical-sizing: auto;
@@ -327,7 +249,7 @@
 }
 
 body{
-   background-color: #000;
+   background-color: #1C1917;
    overflow: hidden;
 }
 
@@ -380,4 +302,9 @@ body{
 .react-player-container {
   border-radius: 10px;
   overflow: hidden;
+}
+
+
+.tippy-content {
+  @apply roboto-condensed-light
 }

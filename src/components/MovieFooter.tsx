@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const MovieFooter = () => {
   return (
-    <footer className="bg-[#1C1917] border-[#27272a] rounded-lg shadow m-4 border ">
+    <footer className="bg-[#1C1917] border-[#27272a] rounded-lg shadow m-4 border touch-auto">
       <div className="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between gap-2">
         <span className="text-sm sm:text-center text-white">
           © {new Date().getFullYear()}{" "}

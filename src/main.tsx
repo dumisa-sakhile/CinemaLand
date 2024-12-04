@@ -4,6 +4,7 @@ import { HelmetProvider } from "react-helmet-async";
 import "./index.css";
 import App from "./App.tsx";
 import { ClerkProvider } from "@clerk/clerk-react";
+import { dark } from "@clerk/themes";
 
 // Import your publishable key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
@@ -17,6 +18,9 @@ root.render(
   <StrictMode>
     <HelmetProvider>
       <ClerkProvider
+        appearance={{
+          baseTheme: dark,
+        }}
         publishableKey={PUBLISHABLE_KEY}
         afterSignOutUrl="/"
         signInFallbackRedirectUrl="/"

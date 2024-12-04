@@ -72,12 +72,12 @@ const MovieDiscover = () => {
       />
 
       <motion.div
-        className="flex flex-col gap-4 w-full h-scree items-center overflow-auto py-4 pb-0"
+        className="relative flex flex-col gap-4 w-full h-screen items-center overflow-auto py-4 pb-0"
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}>
-        <aside className=" absolute top-1 flex flex-row gap-2 items-center justify-between w-full rounded bg-black z-10">
-          <ul className="hide-scrollbar flex-wrap flex flex-row gap-1 items-start justify-start roboto-condensed-light  rounded py-2 px-2 text-sm">
+        <aside className="flex-nowrap absolute top-2 rounded-md left-[6%] flex flex-row gap-2 items-start justify-start h-[50px] w-[80%] bg-[#1C1917] bg-opacity-50 border border-[#27272a]">
+          <ul className="hide-scrollbar overflow-auto h-full w-full  flex flex-row gap-1 items-start justify-start inter-medium  rounded py-2 px-2 text-sm">
             {Array.from(GenreData()).map(
               (genre: { id: number; name: string }) => (
                 <Button
@@ -85,8 +85,8 @@ const MovieDiscover = () => {
                   id={genre.id.toLocaleString()}
                   className={
                     genre.id === genreId
-                      ? "bg-[#FACC15] border border-yellow-900 text-yellow-900 rounded-lg"
-                      : "roboto-condensed-light bg-transparent text-white"
+                      ? "bg-[#FACC15] border border-yellow-900 text-yellow-950 rounded-lg inline-block"
+                      : "inter-regular bg-transparent text-white"
                   }
                   onClick={() => handleGenreChange(genre.id, genre.name)}>
                   {genre.name}
@@ -96,7 +96,7 @@ const MovieDiscover = () => {
           </ul>
         </aside>
 
-        <main className="flex flex-row flex-wrap gap-10 min-w-[500px] p-10 pb-[40px]  rounded-lg justify-center items-center bg-[#000000]">
+        <main className="flex flex-row flex-wrap gap-10 w-full pt-24 pb-[40px]  rounded-lg justify-center items-center">
           {isLoading && <Skeleton />}
           {isError && <ApiError error={error.message} />}
 
@@ -114,7 +114,7 @@ const MovieDiscover = () => {
         </main>
         {/* Display popular movies */}
 
-        <div className="relative z-20 w-full flex items-center justify-center bg-black py-20">
+        <div className="relative z-20 w-full flex items-center justify-center bg-[#1C1917] bg-opacity-0 pb-40">
           <MovieFooter />
         </div>
 

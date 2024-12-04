@@ -75,13 +75,13 @@ const MovieSearch = () => {
       />
 
       <motion.div
-        className="flex flex-col gap-4 w-full h-screen overflow-auto items-center"
+        className="relative flex flex-col gap-4 w-full h-screen overflow-auto items-center"
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}>
         {/* search */}
-        <aside className="flex flex-row gap-2 items-center justify-center  py-4 w-[90%] rounded">
-          <h6 className="text-md font-bold oswald-regular text-[#FACC15] ">
+        <aside className="flex absolute -top-2 flex-row gap-2 items-center justify-center  py-4 w-[60%] rounded">
+          <h6 className="text-sm font-bold inter-regular text-[#FACC15] ">
             Movies Search Page
           </h6>
 
@@ -130,14 +130,13 @@ const MovieSearch = () => {
             </div>
           </section>
 
-          <p className="text-md oswald-regular">
-            Search For the Movie{" "}
+          <p className="text-sm inter-regular overflow-hidden whitespace-nowrap text-ellipsis w-[150px]">Search :&nbsp;
             <span className="text-[#FACC15] uppercase">{search}</span>
           </p>
         </aside>
         {/* search */}
 
-        <main className="flex flex-row flex-wrap gap-10 min-w-[500px] p-10 pb-[40px]  rounded-lg justify-center items-center bg-[#000000]">
+        <main className="flex flex-row flex-wrap gap-10 min-w-[500px] pt-24 pb-[40px]  rounded-lg justify-center items-center">
           {isLoading && <Skeleton />}
           {isError && <ApiError error={error.message} />}
 
@@ -156,7 +155,7 @@ const MovieSearch = () => {
           ))}
         </main>
 
-        <div className="relative z-20 w-full flex items-center justify-center bg-black py-20">
+        <div className="relative z-20 w-full flex items-center justify-center bg-[#1C1917]  bg-opacity-0 pb-40">
           <MovieFooter />
         </div>
 

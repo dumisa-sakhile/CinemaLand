@@ -29,6 +29,8 @@ import { useEffect } from "react";
 import { toast } from "sonner";
 import { useLayoutEffect } from "react";
 import Meta from "@/components/Meta";
+import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css";
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -111,7 +113,7 @@ const MovieDetails = () => {
 
         <main className="w-full h-screen flex flex-col items-center justify-center z-10 bg-black border border-[#27272a]  rounded-lg shadow absolute top-0 left-0 bg-opacity-20 overflow-auto">
           <motion.aside
-            className="w-full fixed right-0 top-0 h-full flex flex-col items-start justify-start z-10  shadow  overflow-auto p-4 gap-10 bg-gradient-to-r from-black to-transparent pt-[30%] pl-10"
+            className="w-full fixed right-0 top-0 h-full flex flex-col items-start justify-start z-10  shadow  overflow-auto p-4 gap-10 bg-gradient-to-r from-[#1C1917] to-transparent pt-[30%] pl-10"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}>
@@ -135,10 +137,13 @@ const MovieDetails = () => {
                   </Button>
                 </a>
               )}
-              <Button variant="outline" className="bg-transparent">
-                <FontAwesomeIcon icon={faPlus} />
-                add to watchlist
-              </Button>
+
+              <Tippy content="Feature under construction!" placement="right">
+                <Button variant="outline" className="bg-transparent">
+                  <FontAwesomeIcon icon={faPlus} />
+                  add to watchlist
+                </Button>
+              </Tippy>
               {!videoLoading && videoUrls.length > 0 && (
                 <Dialog>
                   <DialogTrigger asChild>
@@ -278,7 +283,7 @@ const MovieDetails = () => {
 
             {/* home and back */}
             <div className="flex gap-4 w-[100px] absolute top-4 left-4">
-              <Button className="w-full" onClick={() => navigate("/")}>
+              <Button className="w-full" onClick={() => navigate("/movie")}>
                 <FontAwesomeIcon icon={faHouse} />
                 <span className="text-lg oswald-regular">Home</span>
               </Button>

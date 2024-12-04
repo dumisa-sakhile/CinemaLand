@@ -82,12 +82,14 @@ const MovieDiscover = () => {
         canonicalUrl={`https://cinema-land.vercel.app/movie/`}
       />
       <motion.div
-        className="flex flex-col gap-4 w-full h-scree items-center overflow-auto py-4"
+        className="relative flex flex-col gap-4 w-full h-scree items-center overflow-auto py-4"
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}>
-        <aside className="flex flex-row gap-2 items-center justify-between w-[80%] rounded">
-          <div className="relative z-20 min-w-[200px] flex items-center justify-between   rounded">
+        <aside className="flex-nowrap absolute top-4 rounded-md left-[6%] flex flex-row gap-10 items-center justify-start px-4 h-[50px] w-[80%] bg-inherit">
+          <div
+            className=" z-20 min-w-[200px] flex items-center justify-between   text-sm bg-[#1c1917] border
+          border-[#27272a] bg-opacity-70 rounded-md">
             <button
               className={`px-10 py-2 rounded-md flex items-center justify-center gap-4 ${
                 period === "day"
@@ -107,13 +109,12 @@ const MovieDiscover = () => {
               Week
             </button>
           </div>
-
-          <p className="text-md">
+          <p className="text-sm inter-light">
             {user && user.fullName && (
-              <p className="text-md font-bold oswald-regular inline">
+              <p className="text-md inline">
                 Hello,&nbsp;
                 <span className="text-[#FACC15] ">{user.fullName}</span>{" "}
-                &nbsp;on&nbsp;
+                &nbsp;welcome&nbsp;on&nbsp;
               </p>
             )}
             Trending movies on TMDB this{" "}
@@ -122,7 +123,7 @@ const MovieDiscover = () => {
           </p>
         </aside>
 
-        <main className="flex flex-row flex-wrap gap-10 min-w-[500px] p-10 pb-[40px]  rounded-lg justify-center items-center bg-[#000000]">
+        <main className="flex flex-row flex-wrap gap-10 min-w-[500px] pt-24 pb-[40px]  rounded-lg justify-center items-center">
           {isLoading && <Skeleton />}
           {isError && <ApiError error={error.message} />}
 
@@ -140,7 +141,7 @@ const MovieDiscover = () => {
         </main>
         {/* Display popular movies */}
 
-        <div className="relative z-20 w-full flex items-center justify-center bg-black py-20">
+        <div className="relative z-20 w-full flex items-center justify-center bg-[#1C1917] bg-opacity-0 pb-40">
           <MovieFooter />
         </div>
 
