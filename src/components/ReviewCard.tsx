@@ -56,14 +56,21 @@ const ReviewCard = ({ author, createdAt, updatedAt, rating, content, url} : Revi
       </header>
 
       {/* review body */}
-      <p className="text-md roboto-condensed-light text-justify">
-        {content && content.length > 50 * 5
-          ? content.substring(0, content.indexOf(" ", 50 * 5)) + "..."
-          : content}
-      </p>
+      <p
+        className="text-md roboto-condensed-light text-justify"
+        dangerouslySetInnerHTML={{
+          __html:
+            content && content.length > 50 * 5
+              ? content.substring(0, content.indexOf(" ", 50 * 5)) + "..."
+              : content,
+        }}
+      />
 
       <div className="w-full flex items-center justify-end">
-        <Button variant="link" className="absolute top-10 right-4" disabled={!url}>
+        <Button
+          variant="link"
+          className="absolute top-10 right-4"
+          disabled={!url}>
           <a href={url} target="_blank" className="w-full h-full">
             Read more
           </a>

@@ -37,7 +37,7 @@ const MovieNavigation = () => {
 
   useEffect(() => {
     if(user){
-      toast.success(`Welcome to Cinema Base ${user.fullName}`);
+      toast.success(`Welcome to Cinema Land ${user?.fullName}`);
     }else{
       toast.warning(`Please sign in to access the Movie details page`);
     }
@@ -55,7 +55,7 @@ const MovieNavigation = () => {
         <Tippy content="Go to Home" placement="right">
           <Link to="/movie">
             <div className="w-full -ml-4 absolute top-10  items-center justify-start text-lg flex  hover:scale-110">
-              <img src={Logo} alt="Cinema Base" className="h-10 w-10" />
+              <img src={Logo} alt="Cinema Land" className="h-10 w-10" />
             </div>
           </Link>
         </Tippy>

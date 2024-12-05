@@ -12,7 +12,7 @@ const Header = () => {
       <header className=" min-w-[90vw]  min-h-[50px] flex justify-between items-center px-4 rounded-lg md:fixed md:top-10 ">
         <Link to="/">
           <div className=" gap-5 items-center justify-center text-lg hidden md:flex">
-            <img src={Logo} alt="Cinema Base" className="h-10 w-10" />
+            <img src={Logo} alt="Cinema Land" className="h-10 w-10" />
             <h6 className="oswald-light">Cinema Land</h6>
           </div>
         </Link>
