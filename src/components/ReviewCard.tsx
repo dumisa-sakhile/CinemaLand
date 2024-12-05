@@ -15,7 +15,8 @@ const ReviewCard = ({ author, createdAt, updatedAt, rating, content, url} : Revi
     <motion.article
       className="bg-[#1C1917] border border-[#27272a]  rounded-lg p-4 bg-opacity-75 w-[500px] md:w3/4 lg:w3/4 flex flex-col items-start justify-start gap-4 relative"
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}>
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}>
       {/* review by and profile */}
       <header className="flex gap-2 items-center justify-start text-sm oswald-light w-full">
         <h2 className=" text-2xl  roboto-condensed-regular text-[#FACC15]">
