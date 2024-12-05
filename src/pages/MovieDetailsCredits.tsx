@@ -4,22 +4,18 @@ import { getMovieCredits } from "@/components/Api";
 import { useParams } from "react-router-dom";
 import Skeleton from "@/components/Skeleton";
 import ApiError from "@/components/ApiError";
-import { useEffect } from "react";
 import CastCard from "@/components/CastCard";
 
 const MovieDetailsCredits = () => {
   const { movieId } = useParams();
 
-  const { data, isLoading, isError, error, refetch } = useQuery({
+  const { data, isLoading, isError, error } = useQuery({
     queryKey: ["credits", movieId],
     queryFn: () => getMovieCredits(movieId),
   });
 
 
-   useEffect(() => {
-    refetch();
-  }, [data]);
-
+  
 
 
   return (

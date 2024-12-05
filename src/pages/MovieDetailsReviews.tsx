@@ -11,7 +11,7 @@ import ReviewCard from "@/components/ReviewCard";
 const MovieDetailsReviews = () => {
   const { movieId } = useParams();
 
-  const { data, isLoading, isError, error, refetch } = useQuery({
+  const { data, isLoading, isError, error } = useQuery({
     queryKey: ["reviews", movieId],
     queryFn: () => getMoviesReviews(movieId),
   });
@@ -22,11 +22,6 @@ const MovieDetailsReviews = () => {
     }
   }, [isError, error]);
 
-  useEffect(() => {
-    refetch();
-  }, [data]);
-
-  
 
   return (
     <motion.section

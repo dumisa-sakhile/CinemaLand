@@ -17,8 +17,6 @@ const { data, isLoading, isError, error } = useQuery({
 });
 
 
-
-
   return (
     <motion.section
       className="flex flex-wrap items-center justify-center w-full gap-6"

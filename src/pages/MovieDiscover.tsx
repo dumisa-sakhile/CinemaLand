@@ -51,12 +51,6 @@ const MovieDiscover = () => {
    }, [data]);
 
    useEffect(() => {
-     if (isLoading) {
-       toast.info("Loading data...");
-     }
-   }, [isLoading]);
-
-   useEffect(() => {
      if (isError) {
        toast.error(`Error loading data:  ${error.message}`);
      }

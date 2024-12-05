@@ -28,12 +28,7 @@ const MovieTopRated = () => {
     if (data) {
       setTotalPages(data.total_pages);
     }
-  }, [data]);
- useEffect(() => {
-   if (isLoading) {
-     toast.info("Loading data...");
-   }
- }, [isLoading]);
+  }, [data])
 
  useEffect(() => {
    if (isError) {

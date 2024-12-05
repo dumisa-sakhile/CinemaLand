@@ -47,11 +47,6 @@ const MovieDetails = () => {
     queryFn: () => getMovieVideos(movieId),
   });
 
-  useEffect(() => {
-    if (isLoading) {
-      toast.info("Loading movie details...");
-    }
-  }, [isLoading]);
 
   useEffect(() => {
     if (isError) {
@@ -62,9 +57,6 @@ const MovieDetails = () => {
   useLayoutEffect(() => {
     toast.success(`Movie details for ${data?.title} loaded successfully!`);
   }, [data]);
-
-
-  
 
 
 

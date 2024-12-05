@@ -41,11 +41,6 @@ const MovieGenre = () => {
        setTotalPages(data.total_pages);
      }
    }, [data]);
-   useEffect(() => {
-     if (isLoading) {
-       toast.info("Loading data...");
-     }
-   }, [isLoading]);
 
    useEffect(() => {
      if (isError) {
@@ -88,9 +83,9 @@ const MovieGenre = () => {
      } else {
       setSearchParams(
         new URLSearchParams({
-          page: String(1),
-          with_genre_id: String(28),
           with_genre_type: String("Action"),
+          with_genre_id: String(28),
+          page: String(1),
         })
       );
 
