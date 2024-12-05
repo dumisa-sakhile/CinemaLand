@@ -34,7 +34,7 @@ const router = createBrowserRouter([
         element: <MoviePageLayout />,
         children: [
           { index: true, element: <MovieDiscover /> },
-          { path: "/movie/popular", element: <MoviePopular /> },
+          { path: "/movie/popular?", element: <MoviePopular /> },
           { path: "/movie/genre-filters", element: <MovieGenre /> },
           { path: "/movie/now-playing", element: <MovieNowPlaying /> },
           { path: "/movie/top-rated", element: <MovieTopRated /> },
