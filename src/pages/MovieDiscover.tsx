@@ -10,15 +10,17 @@ import Pagination from "@/components/Pagination";
 import { motion } from "framer-motion";
 import Meta from "@/components/Meta";
 import { useUser } from "@clerk/clerk-react";
+import { useSearchParams } from "react-router-dom";
 
 
 const MovieDiscover = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const { user } = useUser();
   const [period, setPeriod] = useState<"week" | "day">("day");
   const [pageNumber, setPageNumber] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(9);
 
-  const { data, isLoading, isError, error, refetch } = useQuery({
+  const { data, isLoading, isError, error } = useQuery({
     queryKey: ["trending", period, pageNumber],
     queryFn: () => getTrendingMovies(period, pageNumber),
     placeholderData: keepPreviousData,
@@ -27,7 +29,6 @@ const MovieDiscover = () => {
   const handlePeriodChange = (newPeriod: "day" | "week") => {
     setPeriod(newPeriod);
     setPageNumber(1); // Reset page number when period changes
-    refetch(); // Refetch data when period changes
   };
 
   useEffect(() => {
@@ -72,6 +73,40 @@ const MovieDiscover = () => {
         toast.warning(`Please sign in to access the Movie details page`);
       }
     }, [user]);
+
+    useEffect(() => {
+      setSearchParams(new URLSearchParams({ page: String(pageNumber) }));
+    }, [pageNumber, setSearchParams]);
+
+useEffect(() => {
+  setSearchParams(
+    new URLSearchParams({
+      with_period: String(period),
+      page: String(pageNumber),
+    })
+  );
+}, [pageNumber, period, setSearchParams]);
+
+
+    useEffect(() => {
+      const currentPageNumber = searchParams.get("page");
+      const currentPagePeriod = searchParams.get("with_period");
+
+      if (currentPagePeriod) {
+        setPeriod(currentPagePeriod as "day" | "week");
+      }
+      if (currentPageNumber) {
+        setPageNumber(Number(currentPageNumber));
+      } else {
+       setSearchParams(
+         new URLSearchParams({
+           page: String(1),
+           with_period: String("day"),
+         })
+       );
+
+      }
+    }, []);
 
 
   return (

@@ -10,8 +10,10 @@ import Pagination from "@/components/Pagination";
 import { motion } from "framer-motion";
 import Meta from "@/components/Meta";
 import MovieHeaderComponent from "@/components/MovieHeaderComponent";
+import { useSearchParams } from "react-router-dom";
 
 const MovieUpcoming = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const [pageNumber, setPageNumber] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(9);
@@ -44,6 +46,19 @@ const MovieUpcoming = () => {
     toast.success(
       "Welcome to the Upcoming Movies Page! Here you can find the most popular movies on TMDB."
     );
+  }, []);
+
+  useEffect(() => {
+    setSearchParams(new URLSearchParams({ page: String(pageNumber) }));
+  }, [pageNumber, setSearchParams]);
+
+  useEffect(() => {
+    const currentPageNumber = searchParams.get("page");
+    if (currentPageNumber) {
+      setPageNumber(Number(currentPageNumber));
+    } else {
+      setSearchParams(new URLSearchParams({ page: String(1) }));
+    }
   }, []);
 
 

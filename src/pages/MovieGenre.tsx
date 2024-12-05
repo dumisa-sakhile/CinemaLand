@@ -11,8 +11,10 @@ import { Button } from "@/components/ui/button";
 import Pagination from "@/components/Pagination";
 import { motion } from "framer-motion";
 import Meta from "@/components/Meta";
+import { useSearchParams } from "react-router-dom";
 
-const MovieDiscover = () => {
+const MovieGenre = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   
   const [genreId, setGenreId] = useState<number>(28);
   const [genreType, setGenreType] = useState<string>("Action");
@@ -20,7 +22,7 @@ const MovieDiscover = () => {
   const [pageNumber, setPageNumber] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(9);
 
-  const { data, isLoading, isError, error, refetch } = useQuery({
+  const { data, isLoading, isError, error } = useQuery({
     queryKey: ["genre", genreId, pageNumber],
     queryFn: () => getMoviesByGenre(pageNumber, genreId),
     placeholderData: keepPreviousData,
@@ -30,7 +32,6 @@ const MovieDiscover = () => {
     setGenreId(id);
     setGenreType(name)
     setPageNumber(1); // Reset page number when genre changes
-    refetch(); // Refetch data when genre changes
   };
   {
   }
@@ -61,6 +62,40 @@ const MovieDiscover = () => {
    useEffect(() => {
      toast.info(`Movies filtered by Genre: ${genreType}`);
    }, [genreId, genreType]);
+
+   useEffect(() => {
+
+    setSearchParams(
+      new URLSearchParams({
+        with_genre_type: String(genreType),
+        with_genre_id: String(genreId),
+        page: String(pageNumber),
+      })
+    );
+
+   }, [pageNumber, genreId, genreType]);
+
+   useEffect(() => {
+     const currentPageNumber = searchParams.get("page");
+     const currentGenreType = searchParams.get("with_genre_type");
+     const currentGenreId = searchParams.get("with_genre_id");
+
+     if (currentGenreType && currentGenreId) {
+       handleGenreChange(Number(currentGenreId), currentGenreType);
+     }
+     if (currentPageNumber) {
+       setPageNumber(Number(currentPageNumber));
+     } else {
+      setSearchParams(
+        new URLSearchParams({
+          page: String(1),
+          with_genre_id: String(28),
+          with_genre_type: String("Action"),
+        })
+      );
+
+     }
+   }, []);
 
 
   return (
@@ -132,4 +167,4 @@ const MovieDiscover = () => {
   );
 };
 
-export default MovieDiscover;
+export default MovieGenre;

@@ -27,49 +27,52 @@ const queryClient = new QueryClient();
 const router = createBrowserRouter([
   {
     path: "/",
-    element : <Home/>
+    element: <Home />,
   },
+  {
+    path: "/movie",
+    element: <MoviePageLayout />,
+    children: [
+      { index: true, element: <MovieDiscover /> },
+      { path: "/movie/popular", element: <MoviePopular /> },
+      { path: "/movie/genre-filters", element: <MovieGenre /> },
       {
-        path: "/movie",
-        element: <MoviePageLayout />,
-        children: [
-          { index: true, element: <MovieDiscover /> },
-          { path: "/movie/popular?", element: <MoviePopular /> },
-          { path: "/movie/genre-filters", element: <MovieGenre /> },
-          { path: "/movie/now-playing", element: <MovieNowPlaying /> },
-          { path: "/movie/top-rated", element: <MovieTopRated /> },
-          { path: "/movie/upcoming", element: <MovieUpcoming /> },
-          { path: "/movie/search", element: <MovieSearch /> },
-        ],
+        path: "/movie/now-playing",
+        element: <MovieNowPlaying />,
+      },
+      { path: "/movie/top-rated", element: <MovieTopRated /> },
+      { path: "/movie/upcoming", element: <MovieUpcoming /> },
+      { path: "/movie/search", element: <MovieSearch /> },
+    ],
+  },
+  {
+    element: <ProtectedRoute />,
+    children: [
+      {
+        path: "/movie/:category/:categoryId",
+        element: <MovieCategory />,
       },
       {
-        element: <ProtectedRoute />,
+        path: "/movie/:movieId",
+        element: <MovieDetails />,
         children: [
           {
-            path: "/movie/:category/:categoryId",
-            element: <MovieCategory />,
+            index: true,
+            element: <MovieDetailsReviews />,
           },
           {
-            path: "/movie/:movieId",
-            element: <MovieDetails />,
-            children: [
-              {
-                index: true,
-                element: <MovieDetailsReviews />,
-              },
-              {
-                path: "/movie/:movieId/recommendations",
-                element: <MovieDetailsRecommendations />,
-              },
-              {
-                path: "/movie/:movieId/credits",
-                element: <MovieDetailsCredits />,
-              }, // Catch-all for nested routes
-            ],
+            path: "/movie/:movieId/recommendations",
+            element: <MovieDetailsRecommendations />,
           },
+          {
+            path: "/movie/:movieId/credits",
+            element: <MovieDetailsCredits />,
+          }, // Catch-all for nested routes
         ],
       },
-  
+    ],
+  },
+
   { path: "*", element: <NotFound /> },
 ]);
 
