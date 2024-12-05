@@ -9,8 +9,10 @@ import { toast } from "sonner";
 import Pagination from "@/components/Pagination";
 import { motion } from "framer-motion";
 import Meta from "@/components/Meta";
+import { useSearchParams } from "react-router-dom";
 
 const MovieSearch = () => {
+   const [searchParams, setSearchParams] = useSearchParams();
   
   const [pageNumber, setPageNumber] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(9);
@@ -59,6 +61,35 @@ const MovieSearch = () => {
       toast.info(`Search results for: ${search.toUpperCase()}`);
     }
   }, [data]);
+
+  useEffect(() => {
+    setSearchParams(
+      new URLSearchParams({
+        with_search: String(search),
+        page: String(pageNumber),
+      })
+    );
+  }, [pageNumber, search, setSearchParams]);
+
+  useEffect(() => {
+    const currentPageNumber = searchParams.get("page");
+    const currentSearch = searchParams.get("with_search");
+
+    if (currentSearch) {
+      setSearch(currentSearch);
+    }
+    if (currentPageNumber) {
+      setPageNumber(Number(currentPageNumber));
+    } else {
+      setSearchParams(
+        new URLSearchParams({
+          page: String(1),
+          with_search: String(""),
+        })
+      );
+    }
+  }, []);
+
 
   
 

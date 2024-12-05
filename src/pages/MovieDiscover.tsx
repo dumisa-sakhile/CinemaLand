@@ -74,10 +74,6 @@ const MovieDiscover = () => {
       }
     }, [user]);
 
-    useEffect(() => {
-      setSearchParams(new URLSearchParams({ page: String(pageNumber) }));
-    }, [pageNumber, setSearchParams]);
-
 useEffect(() => {
   setSearchParams(
     new URLSearchParams({
