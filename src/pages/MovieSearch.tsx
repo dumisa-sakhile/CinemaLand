@@ -143,7 +143,7 @@ const MovieSearch = () => {
                 type="search"
                 id="default-search"
                 className="block w-full p-4 ps-10 text-sm text-white border border-[#27272a] rounded-lg bg-[#1C1917]  focus:ring-[#FACC15] focus:border-[#FACC15] focus:outline-none"
-                placeholder="Search Mockups, Logos..."
+                placeholder="Search Movie, The Hobbit..."
                 value={search}
                 onChange={handleSearch}
                 autoComplete="off"
