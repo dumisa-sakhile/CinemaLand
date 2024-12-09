@@ -134,7 +134,7 @@ useEffect(() => {
               Week
             </button>
           </div>
-          <p className="text-md oswald-light hidden md:block">
+          <p className="text-sm roboto-condensed-light hidden md:block">
             {user && user.fullName && (
               <p className="text-md inline">
                 Hello,&nbsp;
